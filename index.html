@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Slide Ads · Los anuncios esperan su turno</title>
+<meta name="description" content="Slide guarda los anuncios que interrumpen tus juegos y videos para que los veas cuando quieras. Cada uno que ves te da 5 minutos sin anuncios. Próximamente en Android.">
+<meta property="og:title" content="Slide Ads · Los anuncios esperan su turno">
+<meta property="og:description" content="Slide atrapa los anuncios que interrumpen y los guarda para después. Apúntate para probarla.">
+<meta property="og:image" content="https://nales1133.github.io/slide-ads-web/img/og.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E8E9D8">
+<link rel="icon" href="img/icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* ======================================================================
+   CONFIGURACIÓN: cambia solo estas dos líneas.
+   - FORM_URL: el enlace de tu formulario de Tally (https://tally.so/r/XXXX)
+     o de Google Forms. Mientras esté vacío, el botón avisa que pronto abre.
+   - CONTACTO: correo para estudios y desarrolladores.
+   (Están en el <script> al final del archivo.)
+   ====================================================================== */
+:root{
+  --cream:#E8E9D8; --cream-hi:#F4F5E8; --shadow:#C3C4B0;
+  --petal:#A8C6E8; --corn:#5279B9; --corn-dark:#3C62A3; --ink:#1C2C4A; --muted:#4A5A76;
+  --green:#3FAE6A; --yellow:#F2C230; --red:#C8412B;
+  --raise:8px 8px 18px var(--shadow), -8px -8px 18px #fff;
+  --raise-sm:5px 5px 11px var(--shadow), -5px -5px 11px #fff;
+  --inset:inset 4px 4px 9px var(--shadow), inset -4px -4px 9px #fff;
+  --display:'Bricolage Grotesque', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  --body:'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--cream); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased}
+a{color:var(--corn-dark)}
+.wrap{max-width:1080px; margin:0 auto; padding-inline:20px}
+h1,h2,h3{font-family:var(--display); line-height:1.08; margin:0; text-wrap:balance}
+p{margin:0}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:54px; padding:0 26px; border-radius:27px; border:0; cursor:pointer;
+  font:700 17px var(--body); text-decoration:none; transition:transform .1s ease, box-shadow .15s ease}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:var(--corn); color:#fff; box-shadow:0 6px 0 var(--corn-dark), 0 14px 24px rgba(28,44,74,.22)}
+.btn.primary:active{transform:translateY(4px); box-shadow:0 2px 0 var(--corn-dark)}
+.btn.soft{background:var(--cream); color:var(--ink); box-shadow:var(--raise-sm)}
+.btn:focus-visible{outline:3px solid var(--corn); outline-offset:4px}
+
+/* ---------- cabecera ---------- */
+header{padding-block:18px}
+header .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font:800 22px var(--display)}
+.brand svg{width:40px; height:40px; border-radius:11px; box-shadow:var(--raise-sm)}
+.pill{display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:18px; font:600 14px var(--body); color:var(--muted); background:var(--cream); box-shadow:var(--inset)}
+.pill i{width:8px; height:8px; border-radius:4px; background:var(--green); display:block}
+
+/* ---------- portada ---------- */
+.hero{padding-block:28px 64px}
+.hero .wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center}
+.hero h1{font-size:clamp(42px, 7vw, 76px); letter-spacing:-1.5px}
+.hero h1 em{font-style:normal; color:var(--corn)}
+.lead{margin-top:20px; font-size:clamp(18px, 2.2vw, 21px); color:var(--muted); max-width:34ch}
+.cta{margin-top:30px; display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+.note{margin-top:18px; font-size:14px; color:var(--muted)}
+.phone{justify-self:center; width:min(100%, 320px); aspect-ratio:9/16; border-radius:30px; position:relative;
+  box-shadow:0 30px 60px rgba(28,44,74,.28), var(--raise)}
+.phone video{width:100%; height:100%; display:block; border-radius:30px; object-fit:cover; background:#E3E7DA}
+.sound{position:absolute; right:14px; top:14px; width:44px; height:44px; border-radius:22px; border:0; cursor:pointer;
+  background:rgba(255,255,255,.88); color:var(--ink); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.sound svg{width:22px; height:22px}
+
+/* ---------- cómo funciona ---------- */
+section{padding-block:56px}
+.eyebrow{font:600 14px var(--body); letter-spacing:3px; text-transform:uppercase; color:var(--corn-dark)}
+.title{margin-top:10px; font-size:clamp(32px, 4.6vw, 48px); letter-spacing:-.8px; max-width:20ch}
+.steps{margin-top:36px; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:22px}
+.card{background:var(--cream); border-radius:28px; padding:28px 24px; box-shadow:var(--raise); display:flex; flex-direction:column; gap:12px}
+.card .ico{width:56px; height:56px; border-radius:18px; box-shadow:var(--inset); display:flex; align-items:center; justify-content:center}
+.card .ico svg{width:30px; height:30px}
+.card h3{font-size:24px}
+.card p{color:var(--muted)}
+.gauge{display:flex; gap:6px; margin-top:4px}
+.gauge span{flex:1; height:8px; border-radius:4px; background:#D9DACB}
+.gauge span.on{background:var(--green)}
+.gauge span.y{background:var(--yellow)}
+
+/* ---------- honestidad / socios ---------- */
+.band{background:var(--ink); color:#E8E9D8; border-radius:36px; padding:44px clamp(24px, 5vw, 56px); display:grid; grid-template-columns:1.2fr .8fr; gap:32px; align-items:center}
+.band h2{font-size:clamp(28px, 3.6vw, 40px); color:#fff}
+.band p{color:#C9D3E6; margin-top:14px}
+.band .btn.soft{background:#2A3A5C; color:#fff; box-shadow:none}
+.band ul{margin:16px 0 0; padding:0; list-style:none; display:grid; gap:10px; color:#C9D3E6}
+.band li{display:flex; gap:10px}
+.band li::before{content:""; width:8px; height:8px; margin-top:9px; border-radius:4px; background:var(--petal); flex-shrink:0}
+
+/* ---------- formulario ---------- */
+.signup{display:grid; grid-template-columns:.9fr 1.1fr; gap:40px; align-items:start}
+.formbox{background:var(--cream); border-radius:30px; padding:24px; box-shadow:var(--raise); min-height:200px}
+.formbox iframe{width:100%; min-height:520px; border:0; border-radius:18px; background:transparent}
+.waiting{display:flex; flex-direction:column; gap:14px; align-items:flex-start}
+.waiting p{color:var(--muted)}
+.list{margin-top:18px; display:grid; gap:12px; color:var(--muted)}
+.list div{display:flex; gap:12px; align-items:flex-start}
+.list b{color:var(--ink)}
+.check{width:26px; height:26px; flex-shrink:0; border-radius:13px; box-shadow:var(--inset); display:flex; align-items:center; justify-content:center; color:var(--green); font-weight:700}
+
+footer{padding-block:40px 56px; color:var(--muted); font-size:14px}
+footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px}
+
+/* ---------- cara de Slide (mira de reojo y se asoma) ---------- */
+.face .eye{transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+.face.front .pupil{transform:translateX(-6px)}
+.face.front .lid{transform:translateY(-3px)}
+
+/* ---------- Slide mirando lo importante ---------- */
+.slide{display:inline-block; width:var(--s, 64px); height:var(--s, 64px); flex-shrink:0; filter:drop-shadow(4px 6px 8px rgba(28,44,74,.18))}
+.slide svg{display:block; width:100%; height:100%}
+.slide .pp{transform:translate(var(--dx, 6px), var(--dy, 0px)); transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
+.slide .ld{transform:translateY(var(--ly, 0px)); transition:transform .3s ease}
+.slide.front .pp{transform:translate(0, 0)}
+.slide.front .ld{transform:translateY(-3px)}
+.slide.bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.cta .slide{margin-left:4px}
+.steps{position:relative}
+.peek-card{position:absolute; right:30px; top:-70px; z-index:-1}
+/* manitas agarradas al borde de la tarjeta, por delante */
+.peek-hands{position:absolute; right:30px; top:-9px; width:84px; height:18px; z-index:2; pointer-events:none}
+.peek-hands i{position:absolute; top:0; width:22px; height:16px; border-radius:10px 10px 8px 8px; background:#A8C6E8;
+  box-shadow:inset 0 -3px 0 rgba(82,121,185,.25), 0 3px 6px rgba(28,44,74,.15)}
+.peek-hands i:first-child{left:8px} .peek-hands i:last-child{right:8px}
+.peek-card.bob, .peek-hands{animation:peekbob 3.2s ease-in-out infinite}
+@keyframes peekbob{50%{transform:translateY(-6px)}}
+.band{position:relative}
+.peek-band{position:absolute; right:clamp(24px, 6vw, 70px); top:-50px; z-index:0}
+.signup-head{display:flex; align-items:flex-end; gap:14px}
+.signup-head .slide{margin-bottom:4px}
+.hero-face{position:relative}
+@media (max-width: 820px){
+  .signup-head .slide{--dx:0px !important; --dy:5px !important}
+  .peek-band{right:24px}
+}
+@media (prefers-reduced-motion: reduce){ .slide.bob, .peek-hands{animation:none} .slide .pp, .slide .ld{transition:none} }
+@media (max-width: 820px){
+  .hero .wrap, .band, .signup{grid-template-columns:1fr}
+  .hero .wrap{gap:36px}
+  .steps{grid-template-columns:1fr; margin-top:72px}
+  .phone{width:min(100%, 280px)}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .face .eye{transition:none} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Slide Ads, inicio">
+      <svg class="face" viewBox="0 0 108 108" aria-hidden="true"><rect width="108" height="108" fill="#A8C6E8"/><path fill="#E8E9D8" d="M24,50 A11,11 0 0,0 46,50 Z"/><path fill="#E8E9D8" d="M62,50 A11,11 0 0,0 84,50 Z"/><circle class="eye pupil" fill="#5279B9" cx="41" cy="53" r="4.6"/><circle class="eye pupil" fill="#5279B9" cx="79" cy="53" r="4.6"/><path class="eye lid" stroke="#5279B9" stroke-width="5" stroke-linecap="round" d="M22,48.5 L48,48.5 M60,48.5 L86,48.5"/><circle fill="#5279B9" cx="54" cy="68" r="3.2"/></svg>
+      Slide Ads
+    </a>
+    <span class="pill"><i></i>Próximamente en Android</span>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Los anuncios <em>esperan su turno.</em></h1>
+        <p class="lead">Slide atrapa los anuncios que interrumpen tus juegos y videos, y los guarda para que los veas cuando quieras. Cada uno que ves te regala 5&nbsp;minutos sin anuncios.</p>
+        <div class="cta">
+          <a class="btn primary" href="#apuntate">Quiero probarla</a>
+          <a class="btn soft" href="#como">Cómo funciona</a>
+          <span class="slide bob" style="--s:62px; --dx:-7px; --dy:1px" role="img" aria-label="Slide mirando el botón Quiero probarla"></span>
+        </div>
+        <p class="note">Gratis. Sin bloquear a nadie: las apps asociadas siguen ganando por sus anuncios.</p>
+      </div>
+      <div class="phone">
+        <video id="promo" src="video/slide-ads.mp4" poster="img/poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Video: Slide atrapa los anuncios y los guarda para después"></video>
+        <button class="sound" id="sound" aria-label="Activar sonido" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h3l5-4v14l-5-4H4z" fill="currentColor"/><path id="soundWaves" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section id="como">
+    <div class="wrap">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2 class="title">Tú decides cuándo ver la publicidad</h2>
+      <div class="steps">
+        <span class="slide peek-card bob" style="--s:84px; --dx:-5px; --dy:5px" aria-hidden="true"></span>
+        <span class="peek-hands" aria-hidden="true"><i></i><i></i></span>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#5279B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 1 0 14 0"/><path d="M12 3v9M8.5 8.5L12 12l3.5-3.5"/></svg></div>
+          <h3>Atrapa</h3>
+          <p>Cuando una app asociada va a mostrarte un anuncio, Slide lo atrapa y sigues jugando sin cortes.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#5279B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div>
+          <h3>Guarda</h3>
+          <p>Los anuncios esperan en tu cola, con espacio para 8. La burbuja te avisa cuando se va llenando.</p>
+          <div class="gauge" aria-label="Cola con 5 de 8 anuncios"><span class="on"></span><span class="on"></span><span class="on"></span><span class="y"></span><span class="y"></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#5279B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></div>
+          <h3>Gana minutos</h3>
+          <p>Mira los anuncios cuando quieras, con volumen y enlaces. Cada uno visto suma 5 minutos sin anuncios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="band">
+        <span class="slide peek-band" style="--s:76px; --dx:-5px; --dy:5px" aria-hidden="true"></span>
+        <div>
+          <h2>Slide está empezando, y lo decimos claro</h2>
+          <p>Slide funciona con las apps que se asocian al programa. Hoy estamos buscando los primeros juegos y apps para probarlo, por eso aún no está en Google Play.</p>
+          <ul>
+            <li>Si te apuntas, te avisamos en cuanto puedas probarlo.</li>
+            <li>Si haces juegos o apps, la integración del piloto es gratis y acompañada.</li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start">
+          <a class="btn primary" href="#apuntate">Apuntarme</a>
+          <a class="btn soft" id="devLink" href="#">Tengo un juego o una app</a>
+          <span id="devMail" style="font-size:14px; color:#C9D3E6"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apuntate">
+    <div class="wrap signup">
+      <div>
+        <p class="eyebrow">Prueba anticipada</p>
+        <div class="signup-head">
+          <h2 class="title">Apúntate para conocer a Slide primero</h2>
+          <span class="slide bob" style="--s:72px; --dx:7px; --dy:3px" aria-hidden="true"></span>
+        </div>
+        <div class="list">
+          <div><span class="check">✓</span><span><b>Solo te escribimos para la prueba.</b> Nada de spam ni de ventas.</span></div>
+          <div><span class="check">✓</span><span><b>Es gratis.</b> No pedimos datos de pago.</span></div>
+          <div><span class="check">✓</span><span><b>Te puedes borrar cuando quieras.</b> Detalles en la <a href="privacidad.html">política de privacidad</a>.</span></div>
+        </div>
+      </div>
+      <div class="formbox" id="formbox"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Slide Ads · Hecho en Colombia</span>
+    <span style="display:flex; gap:18px; flex-wrap:wrap">
+      <a href="https://www.tiktok.com/@soyslide" target="_blank" rel="noopener">TikTok @soyslide</a>
+      <a href="https://www.instagram.com/soyslide" target="_blank" rel="noopener">Instagram @soyslide</a>
+      <a href="mailto:soyslide@gmail.com">soyslide@gmail.com</a>
+      <a href="privacidad.html">Política de privacidad</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  // ======== CONFIGURACIÓN ========
+  var FORM_URL = '';                          // p. ej. 'https://tally.so/r/abc123' o un enlace de Google Forms
+  var CONTACTO = 'soyslide@gmail.com';  // correo para estudios y desarrolladores
+  // ================================
+
+  // Formulario: Tally y Google Forms se muestran dentro de la página; otros enlaces abren aparte.
+  (function () {
+    var box = document.getElementById('formbox');
+    var m = FORM_URL.match(/tally\.so\/(?:r|embed)\/([A-Za-z0-9]+)/);
+    if (m) {
+      box.innerHTML = '<iframe title="Formulario para apuntarse a la prueba de Slide" src="https://tally.so/embed/' + m[1] + '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy"></iframe>';
+    } else if (/docs\.google\.com\/forms/.test(FORM_URL)) {
+      var url = FORM_URL.replace(/\/viewform.*$/, '/viewform') + '?embedded=true';
+      box.innerHTML = '<iframe title="Formulario para apuntarse a la prueba de Slide" src="' + url + '" loading="lazy"></iframe>';
+    } else if (FORM_URL) {
+      box.innerHTML = '<div class="waiting"><p>El formulario se abre en otra pestaña.</p><a class="btn primary" target="_blank" rel="noopener" href="' + FORM_URL + '">Abrir formulario</a></div>';
+    } else {
+      box.innerHTML = '<div class="waiting"><h3 style="font-size:24px">El formulario abre muy pronto</h3><p>Mientras tanto, escríbenos y te apuntamos a mano.</p><a class="btn primary" href="mailto:' + CONTACTO + '?subject=Quiero%20probar%20Slide">Escribir para apuntarme</a></div>';
+    }
+    var dev = document.getElementById('devLink');
+    dev.href = 'mailto:' + CONTACTO + '?subject=Piloto%20de%20Slide%20Ads';
+    document.getElementById('devMail').textContent = CONTACTO;
+  })();
+
+  // Botón de sonido del video
+  (function () {
+    var v = document.getElementById('promo'), b = document.getElementById('sound'), w = document.getElementById('soundWaves');
+    b.addEventListener('click', function () {
+      v.muted = !v.muted;
+      if (!v.muted) { v.currentTime = 0; v.play().catch(function () {}); }
+      b.setAttribute('aria-pressed', String(!v.muted));
+      b.setAttribute('aria-label', v.muted ? 'Activar sonido' : 'Silenciar');
+      w.setAttribute('d', v.muted ? 'M16 9.5l5 5M21 9.5l-5 5' : 'M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11');
+    });
+  })();
+
+  // Caras de Slide: miran hacia lo importante y de vez en cuando te miran a ti
+  (function () {
+    var FACE = '<svg viewBox="0 0 108 108"><rect width="108" height="108" rx="25" fill="#A8C6E8"/>' +
+      '<path fill="#E8E9D8" d="M24,50 A11,11 0 0,0 46,50 Z"/><path fill="#E8E9D8" d="M62,50 A11,11 0 0,0 84,50 Z"/>' +
+      '<g class="pp"><circle fill="#5279B9" cx="35" cy="53" r="4.6"/><circle fill="#5279B9" cx="73" cy="53" r="4.6"/></g>' +
+      '<path class="ld" stroke="#5279B9" stroke-width="5" stroke-linecap="round" d="M22,48.5 L48,48.5 M60,48.5 L86,48.5"/>' +
+      '<circle fill="#5279B9" cx="54" cy="68" r="3.2"/></svg>';
+    var faces = [].slice.call(document.querySelectorAll('.slide'));
+    faces.forEach(function (f) { f.innerHTML = FACE; });
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    faces.forEach(function (f, i) {
+      setTimeout(function loop() {
+        f.classList.add('front');
+        setTimeout(function () { f.classList.remove('front'); }, 1000);
+        setTimeout(loop, 5000 + Math.random() * 3000);
+      }, 1500 + i * 1300);
+    });
+  })();
+
+  // La cara del logo se asoma de vez en cuando
+  (function () {
+    var f = document.querySelector('.brand .face');
+    if (!f || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(function () { f.classList.add('front'); setTimeout(function () { f.classList.remove('front'); }, 900); }, 4200);
+  })();
+</script>
+</body>
+</html>
