@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Slide Ads · Los anuncios esperan su turno</title>
+<title>Sliders · Los anuncios esperan su turno</title>
 <meta name="description" content="Slide guarda los anuncios que interrumpen tus juegos y videos para que los veas cuando quieras. Cada uno que ves te da 5 minutos sin anuncios. Próximamente en Android.">
-<meta property="og:title" content="Slide Ads · Los anuncios esperan su turno">
+<meta property="og:title" content="Sliders · Los anuncios esperan su turno">
 <meta property="og:description" content="Slide atrapa los anuncios que interrumpen y los guarda para después. Apúntate para probarla.">
 <meta property="og:image" content="https://nales1133.github.io/slide-ads-web/img/og.png">
 <meta property="og:type" content="website">
@@ -180,7 +180,6 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
   .kids{grid-template-columns:1fr; border-radius:32px}
   .kids .phone{width:min(100%, 260px); justify-self:center; order:2}
 }
-@media (max-width: 520px){ header .pill{display:none} }
 @media (prefers-reduced-motion: reduce){ .kids .notes span{animation:none} }
 
 /* ---------- botón a la atmósfera de Slidy y Bizy ---------- */
@@ -212,17 +211,196 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
 @media (max-width: 820px){ .kidsgo{font-size:16px} }
 @media (max-width: 520px){ .kids{padding:18px 12px 96px} .kids .say{padding:22px 18px} }
 @media (prefers-reduced-motion: reduce){ .kidsgo, .kidsgo b, .cloud, #slidy:target .say{animation:none} }
+.devchip{display:inline-block; margin-left:8px; padding:3px 10px; border-radius:999px; background:#FFF3C4; color:#6B5300; font:700 12px var(--body); letter-spacing:.5px; text-transform:none; vertical-align:2px}
+
+/* ---------- Radio de Spily ---------- */
+.radiolink{font:700 14px var(--body); color:#fff; background:#3B2A6B; padding:7px 14px; border-radius:18px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; box-shadow:0 3px 0 #22184A}
+.radiolink i{width:8px; height:8px; border-radius:4px; background:#FF4FD8; box-shadow:0 0 8px #FF4FD8}
+.radio{position:relative; border-radius:40px; overflow:hidden; color:#fff; isolation:isolate; background:#160F33;
+  padding:clamp(26px, 5vw, 56px); --a:#FF3FA4; --b:#7B2FF7}
+.radio .bk{position:absolute; inset:-20%; z-index:-2; opacity:0; transition:opacity 1s ease; filter:blur(70px) saturate(1.5)}
+.radio .bk.on{opacity:.85}
+.radio .bk > svg{width:100%; height:100%}
+.radio::after{content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(120% 90% at 50% 0%, rgba(10,6,28,.25), rgba(10,6,28,.72))}
+.radio-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap}
+.radio .eyebrow{color:#FFB3F0}
+.radio h2{font-size:clamp(32px, 4.6vw, 48px); letter-spacing:-.8px; margin-top:8px}
+.radio .sub{margin-top:12px; color:rgba(255,255,255,.75); max-width:40ch}
+.radio-grid{margin-top:34px; display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:clamp(22px, 4vw, 44px); align-items:start}
+/* tarjeta del reproductor: igual que en la app, pero en modo inmersivo */
+.rp{--raise:7px 7px 16px rgba(0,0,0,.42), -6px -6px 14px rgba(255,255,255,.06); --raise-sm:4px 4px 10px rgba(0,0,0,.4), -4px -4px 9px rgba(255,255,255,.06);
+  --inset:inset 4px 4px 10px rgba(0,0,0,.45), inset -4px -4px 9px rgba(255,255,255,.06);
+  background:rgba(22,14,48,.55); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.08);
+  border-radius:32px; padding:20px; display:flex; flex-direction:column; gap:18px; box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.rp-media{border-radius:26px; box-shadow:var(--raise); padding:10px}
+.rp-media .in{border-radius:20px; box-shadow:var(--inset); padding:8px}
+.rp-media .cv{border-radius:16px; overflow:hidden; aspect-ratio:1; position:relative}
+.rp-media .cv > svg{display:block; width:100%; height:100%}
+.rp-title{font:800 24px var(--display); letter-spacing:-.3px}
+.rp-by{font-size:14px; color:rgba(255,255,255,.65); margin-top:2px}
+.rp-wave{border-radius:24px; box-shadow:var(--raise-sm); padding:12px 14px; display:flex; align-items:center; gap:10px; font-size:12px; color:rgba(255,255,255,.7)}
+.rp-wave .t{width:34px; font-variant-numeric:tabular-nums} .rp-wave .t:last-child{text-align:right}
+.rp-bars{flex:1; display:flex; align-items:center; gap:2px; height:38px; cursor:pointer; touch-action:none}
+.rp-bars span{flex:1; border-radius:2px; background:rgba(255,255,255,.22); transition:background .2s}
+.rp-bars span.on{background:var(--a)}
+.rp-ctrl{display:flex; align-items:center; justify-content:center; gap:28px}
+.rbtn{width:56px; height:56px; border-radius:28px; border:0; cursor:pointer; color:#fff; background:transparent; box-shadow:var(--raise-sm); display:flex; align-items:center; justify-content:center}
+.rbtn:active{box-shadow:var(--inset)}
+.rbtn svg{width:22px; height:22px}
+.rplay{width:86px; height:86px; border-radius:43px; border:0; cursor:pointer; background:transparent; box-shadow:var(--raise); display:flex; align-items:center; justify-content:center}
+.rplay span{width:66px; height:66px; border-radius:33px; background:var(--a); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 0 26px color-mix(in srgb, var(--a) 60%, transparent); transition:background .5s}
+.rplay svg{width:28px; height:28px}
+.rbtn:focus-visible, .rplay:focus-visible, .rvol:focus-visible, .rlist button:focus-visible{outline:3px solid #fff; outline-offset:3px}
+.rp-vol{display:flex; align-items:center; gap:12px}
+.rp-vol .rbtn{width:44px; height:44px; border-radius:22px; font-size:20px; flex-shrink:0}
+.rvol{flex:1; height:40px; border-radius:20px; box-shadow:var(--inset); padding:4px; box-sizing:border-box; display:flex; align-items:center; touch-action:none; cursor:pointer}
+.rvol .fill{height:32px; border-radius:16px; background:color-mix(in srgb, var(--a) 55%, transparent); position:relative; pointer-events:none; min-width:32px}
+.rvol .knob{position:absolute; right:0; top:0; width:32px; height:32px; border-radius:16px; background:#2A1F55; box-shadow:2px 2px 6px rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:rgba(255,255,255,.8)}
+/* Spily en su cabina */
+.booth{display:flex; flex-direction:column; gap:18px}
+.dj{position:relative; display:flex; align-items:center; gap:18px}
+.dj .spily{width:clamp(120px, 16vw, 170px); flex-shrink:0; filter:drop-shadow(0 16px 22px rgba(0,0,0,.4))}
+.dj .spily svg{display:block; width:100%; overflow:visible}
+.spily .sp-head{transform-origin:54px 108px; transform-box:view-box}
+.spily .sp-glow{transition:opacity .1s}
+.dj .say{position:relative; background:#fff; color:#2A1F55; border-radius:22px 22px 22px 6px; padding:12px 16px; font:600 16px var(--body); box-shadow:0 10px 24px rgba(0,0,0,.3); max-width:260px}
+.dj .say b{color:#C21FA0}
+.eq{display:flex; align-items:flex-end; gap:4px; height:34px}
+.eq i{width:6px; border-radius:3px; background:linear-gradient(180deg, var(--a), var(--b)); height:6px}
+.rlist{display:flex; flex-direction:column; gap:10px; margin:0; padding:0; list-style:none}
+.rlist button{width:100%; display:flex; align-items:center; gap:14px; padding:8px; border-radius:20px; border:0; cursor:pointer; text-align:left; color:#fff; font:inherit;
+  background:rgba(255,255,255,.05); transition:background .2s, box-shadow .2s}
+.rlist button:hover{background:rgba(255,255,255,.1)}
+.rlist button[aria-current="true"]{background:rgba(255,255,255,.14); box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--a) 70%, transparent)}
+.rlist .th{width:52px; height:52px; border-radius:12px; overflow:hidden; flex-shrink:0}
+.rlist .th > svg{width:100%; height:100%; display:block}
+.rlist .nm{flex:1; min-width:0; font-weight:600; font-size:16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.rlist .du{font-size:13px; color:rgba(255,255,255,.6); font-variant-numeric:tabular-nums}
+.rlist .live{display:none; gap:2px; align-items:flex-end; height:14px}
+.rlist .live i{width:3px; background:var(--a); border-radius:2px; animation:lv .8s ease-in-out infinite}
+.rlist .live i:nth-child(2){animation-delay:.2s} .rlist .live i:nth-child(3){animation-delay:.4s}
+@keyframes lv{0%,100%{height:4px} 50%{height:14px}}
+.radio.playing .rlist button[aria-current="true"] .live{display:flex}
+.radio .credit{margin-top:22px; font-size:13px; color:rgba(255,255,255,.55)}
+/* mini reproductor cuando la radio queda fuera de la vista */
+.mini{position:fixed; left:50%; bottom:16px; transform:translate(-50%, 140%); z-index:50; display:flex; align-items:center; gap:12px; padding:8px 8px 8px 10px; border-radius:999px;
+  background:rgba(22,14,48,.92); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); color:#fff; box-shadow:0 14px 30px rgba(0,0,0,.35); transition:transform .35s cubic-bezier(.3,1.4,.5,1); max-width:calc(100% - 32px)}
+.mini.show{transform:translate(-50%, 0)}
+.mini a{color:#fff; text-decoration:none; display:flex; align-items:center; gap:10px; min-width:0}
+.mini .mface{width:38px; flex-shrink:0} .mini .mface svg{display:block; width:100%}
+.mini span{font:600 14px var(--body); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.mini button{width:40px; height:40px; border-radius:20px; border:0; background:var(--mini-a, #FF3FA4); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0}
+.mini button svg{width:18px; height:18px}
+@media (max-width: 820px){
+  .radio-grid{grid-template-columns:1fr}
+  .booth{display:contents}
+  .dj{order:-1}
+  .rlist{order:1}
+  .radio{border-radius:32px}
+}
+@media (max-width: 520px){ .radio{padding:22px 14px} .rp{padding:14px} .rp-ctrl{gap:20px} .dj .say{font-size:15px} }
+@media (prefers-reduced-motion: reduce){ .rlist .live i{animation:none; height:10px} .radio .bk{transition:none} }
+
+/* botón Radio con mini Spily */
+.radiolink{position:relative; padding:5px 16px 5px 6px; gap:8px; overflow:visible}
+.rl-face{width:30px; height:30px; display:block; margin:-4px 0}
+.rl-face svg{width:100%; height:100%; display:block; overflow:visible; transform-origin:50% 90%; animation:rlnod 1.1s ease-in-out infinite}
+.rl-notes{position:absolute; right:6px; top:-4px; width:30px; height:20px; pointer-events:none}
+.rl-notes i{position:absolute; bottom:0; font-style:normal; font-size:13px; color:#FF4FD8; opacity:0; animation:rlnote 3.3s ease-out infinite}
+.rl-notes i:nth-child(2){left:10px; color:#3EE6FF; animation-delay:1.1s}
+.rl-notes i:nth-child(3){left:20px; animation-delay:2.2s}
+@keyframes rlnod{0%,100%{transform:rotate(-6deg) translateY(0)} 50%{transform:rotate(6deg) translateY(-2px)}}
+@keyframes rlnote{0%{opacity:0; transform:translate(0,4px) scale(.7)} 25%{opacity:1} 100%{opacity:0; transform:translate(6px,-22px) scale(1.1) rotate(15deg)}}
+html.radio-on .rl-face svg{animation-duration:.5s}
+html.radio-on .rl-notes i{animation-duration:1.6s}
+html.radio-on .rl-notes i:nth-child(2){animation-delay:.55s} html.radio-on .rl-notes i:nth-child(3){animation-delay:1.1s}
+/* aviso de lanzamiento, junto a la app */
+.soon{margin-top:18px; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:18px; font:600 14px var(--body); color:var(--muted); background:var(--cream); box-shadow:var(--inset)}
+.soon i{width:8px; height:8px; border-radius:4px; background:var(--green); display:block; animation:soonp 2s ease-in-out infinite}
+@keyframes soonp{50%{box-shadow:0 0 0 5px rgba(63,174,106,.18)}}
+.soon + .cta{margin-top:22px}
+@media (prefers-reduced-motion: reduce){ .rl-face svg, .rl-notes i, .soon i{animation:none} .rl-notes{display:none} }
+
+.rp-media .cv{position:relative}
+.rp-media .cap{position:absolute; left:10px; right:10px; bottom:10px; padding:10px 12px; border-radius:14px; background:rgba(10,6,28,.78); color:#fff; font:600 15px/1.35 var(--body); text-align:center; opacity:0; transform:translateY(6px); transition:opacity .25s, transform .25s; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px)}
+.rp-media .cap.on{opacity:1; transform:none}
+.rlist button.voz .nm small{display:block; font:700 11px var(--body); letter-spacing:1.5px; text-transform:uppercase; color:#FF8FA8}
+.rlist button.voz .th{border-radius:50%}
+.dj .say .dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#E11D48; margin-right:7px; vertical-align:1px; animation:soonp 1.4s ease-in-out infinite; box-shadow:0 0 0 0 rgba(225,29,72,.4)}
+
+/* Spily llama desde el botón de Radio */
+.rl-say{position:absolute; top:calc(100% + 12px); right:0; width:max-content; max-width:220px; background:#fff; color:#2A1F55; font:700 14px/1.3 var(--body); padding:9px 13px; border-radius:16px 4px 16px 16px;
+  box-shadow:0 10px 24px rgba(28,44,74,.22); opacity:0; transform:translateY(-6px) scale(.9); transform-origin:top right; transition:opacity .25s, transform .3s cubic-bezier(.3,1.6,.5,1); pointer-events:none; z-index:5}
+.rl-say::before{content:""; position:absolute; top:-7px; right:18px; border:8px solid transparent; border-top:0; border-bottom-color:#fff}
+.rl-say.on{opacity:1; transform:none}
+.radiofloat{position:fixed; top:12px; right:16px; z-index:60; transform:translateY(-220%); visibility:hidden; transition:transform .4s cubic-bezier(.3,1.4,.5,1); box-shadow:0 3px 0 #22184A, 0 10px 24px rgba(28,44,74,.3)}
+.radiofloat.show{transform:none; visibility:visible}
+@media (prefers-reduced-motion: reduce){ .rl-say, .radiofloat{transition:none} }
+
+/* ---------- TagSlider: tarjetas de viajero ---------- */
+.tagslink{font:700 14px var(--body); color:var(--ink); background:var(--cream); padding:7px 13px; border-radius:18px; text-decoration:none; box-shadow:var(--raise-sm); display:inline-flex; align-items:center; gap:6px}
+.tagslink svg{width:16px; height:16px}
+.tags-head{display:flex; align-items:flex-end; justify-content:space-between; gap:18px; flex-wrap:wrap}
+.tags-head .title{max-width:22ch}
+.tags-sub{margin-top:12px; color:var(--muted); max-width:46ch}
+.tags-count{font:700 14px var(--body); color:var(--muted); padding:8px 14px; border-radius:18px; box-shadow:var(--inset)}
+.tags-count b{color:var(--ink)}
+.tags-grid{margin-top:30px; display:grid; grid-template-columns:minmax(280px, 360px) minmax(0, 1fr); gap:32px; align-items:start}
+/* formulario, como las tarjetas de la app */
+.tagform{background:var(--cream); border-radius:30px; padding:24px; box-shadow:var(--raise); display:flex; flex-direction:column; gap:14px; position:sticky; top:16px}
+.tagform h3{font-size:24px}
+.tagform label{font:600 14px var(--body); color:var(--muted); display:flex; justify-content:space-between}
+.tagform input, .tagform textarea{width:100%; box-sizing:border-box; border:0; border-radius:18px; padding:13px 16px; font:500 16px var(--body); color:var(--ink); background:var(--cream); box-shadow:var(--inset); outline:none; resize:none}
+.tagform textarea{min-height:120px; line-height:1.45}
+.tagform input:focus-visible, .tagform textarea:focus-visible{box-shadow:var(--inset), 0 0 0 3px var(--corn)}
+.tagform .btn{width:100%}
+.tagform .btn[disabled]{opacity:.55; cursor:default}
+.tagform .fine{font-size:13px; color:var(--muted); line-height:1.45}
+.tagform .msg{font:600 14px var(--body); padding:10px 14px; border-radius:14px; box-shadow:var(--inset); display:none}
+.tagform .msg.on{display:block}
+.tagform .msg.bad{color:var(--red)} .tagform .msg.ok{color:var(--green)}
+.tagform .who{display:flex; gap:8px}
+.tagform .who button{flex:1; aspect-ratio:1; max-width:56px; border:0; border-radius:16px; padding:6px; cursor:pointer; background:var(--cream); box-shadow:var(--raise-sm)}
+.tagform .who button[aria-pressed="true"]{box-shadow:var(--inset), 0 0 0 2px var(--corn)}
+.tagform .who svg{display:block; width:100%; height:100%; overflow:visible}
+/* el tablero de tags */
+.board{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:30px 22px; padding-top:14px}
+.ttag{position:relative; background:var(--cream); border-radius:22px 22px 22px 22px; box-shadow:var(--raise); padding:18px 18px 16px 18px; display:flex; flex-direction:column; gap:10px;
+  transform:rotate(var(--r, 0deg)); transition:transform .25s cubic-bezier(.3,1.5,.5,1); --tc:#A8C6E8}
+.ttag:hover{transform:rotate(0deg) translateY(-3px)}
+/* ojal y cordón de la tarjeta de equipaje */
+.ttag::before{content:""; position:absolute; top:-9px; left:50%; width:18px; height:18px; margin-left:-9px; border-radius:50%; background:var(--cream); box-shadow:var(--inset)}
+.ttag::after{content:""; position:absolute; top:-26px; left:50%; width:3px; height:24px; margin-left:-1.5px; border-radius:2px; background:var(--tc); opacity:.8}
+.ttag .tband{height:8px; border-radius:4px; background:var(--tc); opacity:.9}
+.ttag .top{display:flex; align-items:center; gap:10px}
+.ttag .av{width:40px; height:40px; flex-shrink:0; border-radius:12px; box-shadow:var(--raise-sm); overflow:visible}
+.ttag .av svg{display:block; width:100%; height:100%; overflow:visible}
+.ttag .nm{font:800 18px/1.15 var(--display); color:var(--ink); overflow-wrap:anywhere}
+.ttag .kind{font:600 12px var(--body); color:var(--muted); letter-spacing:.5px}
+.ttag .tx{color:var(--ink); font-size:16px; line-height:1.5; white-space:pre-wrap; overflow-wrap:anywhere}
+.ttag .ft{display:flex; justify-content:space-between; align-items:center; gap:8px; padding-top:10px; border-top:2px dashed #CFD0BC; font:600 12px var(--body); color:var(--muted)}
+.ttag .stamp{padding:3px 9px; border-radius:10px; border:2px solid var(--tc); color:var(--ink); transform:rotate(-3deg); letter-spacing:.5px; white-space:nowrap}
+.ttag.mine .kind::after{content:" · tu tag"; color:var(--corn-dark)}
+.ttag.new{animation:tagin .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes tagin{0%{transform:translateY(-30px) rotate(-8deg) scale(.9); opacity:0}}
+.board-more{margin-top:26px; display:flex; justify-content:center}
+#tagMore[hidden]{display:none}
+.board-empty{grid-column:1/-1; color:var(--muted); text-align:center; padding:30px 10px}
+@media (max-width: 820px){ .tags-grid{grid-template-columns:1fr} .tagform{position:relative; top:0} }
+@media (max-width: 520px){ .board{grid-template-columns:1fr; gap:34px} .ttag{--r:0deg !important} }
+@media (prefers-reduced-motion: reduce){ .ttag, .ttag.new{transition:none; animation:none} }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <a class="brand" href="#" aria-label="Slide Ads, inicio">
+    <a class="brand" href="#" aria-label="Sliders, inicio">
       <svg class="face" viewBox="0 0 108 108" aria-hidden="true"><rect width="108" height="108" fill="#A8C6E8"/><path fill="#E8E9D8" d="M24,50 A11,11 0 0,0 46,50 Z"/><path fill="#E8E9D8" d="M62,50 A11,11 0 0,0 84,50 Z"/><circle class="eye pupil" fill="#5279B9" cx="41" cy="53" r="4.6"/><circle class="eye pupil" fill="#5279B9" cx="79" cy="53" r="4.6"/><path class="eye lid" stroke="#5279B9" stroke-width="5" stroke-linecap="round" d="M22,48.5 L48,48.5 M60,48.5 L86,48.5"/><circle fill="#5279B9" cx="54" cy="68" r="3.2"/></svg>
-      Slide Ads
+      Sliders
     </a>
     <span class="hdr-right">
-      <span class="pill"><i></i>Próximamente en Android</span>
+      <a class="tagslink" href="#tags"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Tags</a>
+      <a class="radiolink" href="#radio" aria-label="Radio de Spily"><span class="rl-face" id="rlFace" aria-hidden="true"></span>Radio<span class="rl-notes" aria-hidden="true"><i>♪</i><i>♫</i><i>♪</i></span><span class="rl-say" aria-hidden="true">¿Hey, a dónde vas? Es aquí</span></a>
     </span>
   </div>
 </header>
@@ -234,6 +412,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
         <a class="kidsgo" href="#slidy"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="5" width="34" height="31" rx="11" fill="#fff"/><circle cx="14.5" cy="19" r="5" fill="#FF4F9A"/><circle cx="25.5" cy="19" r="5" fill="#FF4F9A"/><circle cx="15.5" cy="18" r="1.8" fill="#fff"/><circle cx="26.5" cy="18" r="1.8" fill="#fff"/><path d="M15 26q5 4.5 10 0" stroke="#FF4F9A" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span>Vengo por el juego para niños</span><b aria-hidden="true">↓</b></a>
         <h1>Los anuncios <em>esperan su turno.</em></h1>
         <p class="lead">Slide atrapa los anuncios que interrumpen tus juegos y videos, y los guarda para que los veas cuando quieras. Cada uno que ves te regala 5&nbsp;minutos sin anuncios.</p>
+        <p class="soon"><i></i>La app Slide llega pronto a Android</p>
         <div class="cta">
           <a class="btn primary" href="#apuntate">Quiero probarla</a>
           <a class="btn soft" href="#como">Cómo funciona</a>
@@ -310,16 +489,108 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
           </button>
         </div>
         <div class="say">
-          <p class="eyebrow">Para los más peques</p>
+          <p class="eyebrow">Para los más peques <span class="devchip">En desarrollo</span></p>
           <h2>Conoce a <span class="s">Slidy</span> y <span class="b">Bizy</span></h2>
-          <p class="lead2">Los primos de Slide tienen su propio juego musical. Slidy toca una melodía y tu peque la repite. Habla en voz alta, para quienes aún no leen.</p>
+          <p class="lead2">Los primos de Slide tienen su propio juego musical. Slidy toca una melodía y tu peque la repite.</p>
           <div class="modes"><span><b>Memorizar</b> melodías</span><span><b>Aprender</b> canciones</span><span><b>Palabras</b> y letras</span></div>
           <div class="cta">
             <a class="btn play" href="slidy/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Jugar ahora</a>
             <span class="slide bob" style="--dx:-7px; --dy:2px" role="img" aria-label="Slide mirando el botón Jugar ahora"></span>
             <a class="btn kidsoft" href="mailto:soyslide@gmail.com?subject=Slidy">Cuéntanos qué tal</a>
           </div>
-          <p class="note">Gratis en la web mientras lo probamos. Funciona en celular y computador; súbele el volumen.</p>
+          <p class="note">Slidy aún está en desarrollo: esta es una versión de prueba, gratis en la web. Funciona en celular y computador; súbele el volumen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="radio">
+    <div class="wrap">
+      <div class="radio" id="radioBox">
+        <div class="bk on" id="bk0" aria-hidden="true"></div><div class="bk" id="bk1" aria-hidden="true"></div>
+        <div class="radio-head">
+          <div>
+            <p class="eyebrow">Radio de Slide</p>
+            <h2>Spily pone la música</h2>
+            <p class="sub">La prima DJ de Slide tiene alto flow y ocho pistas y mensajes al aire para acompañarte mientras navegas.</p>
+          </div>
+        </div>
+        <div class="radio-grid">
+          <div class="rp" aria-label="Reproductor de la Radio">
+            <div class="rp-media"><div class="in"><div class="cv" id="rCover"></div></div></div>
+            <div>
+              <div class="rp-title" id="rTitle">Pixel Heart Overload</div>
+              <div class="rp-by">Spily · Radio de Slide</div>
+            </div>
+            <div class="rp-wave">
+              <span class="t" id="rPos">0:00</span>
+              <div class="rp-bars" id="rBars" role="slider" tabindex="0" aria-label="Posición de la canción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+              <span class="t" id="rDur">0:00</span>
+            </div>
+            <div class="rp-ctrl">
+              <button class="rbtn" id="rPrev" aria-label="Canción anterior"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2.4v14H6zM20 5.6v12.8a.8.8 0 0 1-1.2.7L9.4 12.7a.8.8 0 0 1 0-1.4l9.4-6.4a.8.8 0 0 1 1.2.7z"/></svg></button>
+              <button class="rplay" id="rPlay" aria-label="Reproducir"><span><svg id="rPlayIco" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5l12 7-12 7z"/></svg></span></button>
+              <button class="rbtn" id="rNext" aria-label="Siguiente canción"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.6 5H18v14h-2.4zM4 5.6v12.8a.8.8 0 0 0 1.2.7l9.4-6.4a.8.8 0 0 0 0-1.4L5.2 4.9A.8.8 0 0 0 4 5.6z"/></svg></button>
+            </div>
+            <div class="rp-vol">
+              <button class="rbtn" id="rVolDn" aria-label="Bajar volumen">−</button>
+              <div class="rvol" id="rVol" role="slider" tabindex="0" aria-label="Volumen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="fill" id="rVolFill"><div class="knob" id="rVolKnob">80</div></div></div>
+              <button class="rbtn" id="rVolUp" aria-label="Subir volumen">+</button>
+            </div>
+          </div>
+          <div class="booth">
+            <div class="dj">
+              <div class="spily" id="spily"></div>
+              <div>
+                <div class="say" id="rSay" aria-live="polite">¿Le damos <b>play</b>?</div>
+                <div class="eq" id="rEq" aria-hidden="true" style="margin-top:14px"></div>
+              </div>
+            </div>
+            <ol class="rlist" id="rList" aria-label="Lista de canciones"></ol>
+          </div>
+        </div>
+        <p class="credit">Pistas creadas con IA (Gemini) para la Radio de Slide. Voz de Spily generada con ElevenLabs.</p>
+      </div>
+    </div>
+    <audio id="rAudio" preload="none"></audio>
+  </section>
+  <div class="mini" id="rMini" aria-hidden="true">
+    <a href="#radio"><span class="mface" id="rMiniFace"></span><span id="rMiniT">Radio de Slide</span></a>
+    <button id="rMiniBtn" aria-label="Pausar" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
+  </div>
+
+  <section id="tags">
+    <div class="wrap">
+      <div class="tags-head">
+        <div>
+          <p class="eyebrow">TagSlider</p>
+          <h2 class="title">Deja tu tag de viajero</h2>
+          <p class="tags-sub">Cuelga un mensaje para quien pase después. Tu tag se queda aquí, como una tarjeta de equipaje, esperando a que alguien lo lea y deje el suyo.</p>
+        </div>
+        <span class="tags-count" id="tagCount" aria-live="polite"><b>0</b> tags colgados</span>
+      </div>
+      <div class="tags-grid">
+        <form class="tagform" id="tagForm" novalidate>
+          <h3>Tu tag</h3>
+          <div>
+            <label for="tagName"><span>Nombre de viajero</span><span id="tagNameN">0/24</span></label>
+            <input id="tagName" name="nombre" maxlength="24" autocomplete="nickname" placeholder="Ej.: Viajera del bus 7" required>
+          </div>
+          <div>
+            <label for="tagText"><span>Tu mensaje</span><span id="tagTextN">0/240</span></label>
+            <textarea id="tagText" name="comentario" maxlength="240" placeholder="Algo bonito para quien venga después…" required></textarea>
+          </div>
+          <div>
+            <label><span>Elige quién te acompaña</span></label>
+            <div class="who" id="tagWho" role="group" aria-label="Personaje de tu tag"></div>
+          </div>
+          <button class="btn primary" type="submit" id="tagSend">Colgar mi tag</button>
+          <div class="msg" id="tagMsg" role="status"></div>
+          <p class="fine">Tu tag es público y queda con la fecha y la hora. No escribas datos personales. Revisamos los tags y quitamos los ofensivos. <a href="privacidad.html">Privacidad</a>.</p>
+        </form>
+        <div>
+          <div class="board" id="tagBoard" aria-live="polite"></div>
+          <div class="board-more"><button class="btn soft" id="tagMore" hidden>Ver más tags</button></div>
         </div>
       </div>
     </div>
@@ -346,7 +617,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Slide Ads · Hecho en Colombia</span>
+    <span>© 2026 Sliders · Hecho en Colombia</span>
     <span style="display:flex; gap:18px; flex-wrap:wrap">
       <a href="https://www.tiktok.com/@soyslide" target="_blank" rel="noopener">TikTok @soyslide</a>
       <a href="https://www.instagram.com/soyslide" target="_blank" rel="noopener">Instagram @soyslide</a>
@@ -360,6 +631,9 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
   // ======== CONFIGURACIÓN ========
   var FORM_URL = '';                          // p. ej. 'https://tally.so/r/abc123' o un enlace de Google Forms
   var CONTACTO = 'soyslide@gmail.com';  // correo para estudios y desarrolladores
+  // TagSlider (ver LEEME.md): enlace prellenado del formulario y enlace de la hoja de respuestas
+  var TAG_FORM = '';
+  var TAG_SHEET = '';
   // ================================
 
   // Formulario: Tally y Google Forms se muestran dentro de la página; otros enlaces abren aparte.
@@ -377,7 +651,7 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
       box.innerHTML = '<div class="waiting"><h3 style="font-size:24px">El formulario abre muy pronto</h3><p>Mientras tanto, escríbenos y te apuntamos a mano.</p><a class="btn primary" href="mailto:' + CONTACTO + '?subject=Quiero%20probar%20Slide">Escribir para apuntarme</a></div>';
     }
     var dev = document.getElementById('devLink');
-    dev.href = 'mailto:' + CONTACTO + '?subject=Piloto%20de%20Slide%20Ads';
+    dev.href = 'mailto:' + CONTACTO + '?subject=Piloto%20de%20Slide';
     document.getElementById('devMail').textContent = CONTACTO;
   })();
 
@@ -398,6 +672,542 @@ footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
     if (sv && 'IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) sv.play().catch(function () {}); else sv.pause(); }); }, { threshold: .35 }).observe(sv);
     } else if (sv) { sv.setAttribute('autoplay', ''); }
+  })();
+
+// Spily (DJ, prima de Slide) y las portadas de la Radio. Todo en SVG, sin imágenes.
+var SPILY_C = { body: '#C4B2F6', bodyHi: '#D9CCFA', hair: '#7E5FE0', ink: '#4B2AA8', white: '#F7F3FF', phone: '#251A4A', cupL: '#FF4FD8', cupR: '#3EE6FF', blush: '#FF8AC8', band: '#FF4FD8' };
+function spilySVG(o) {
+  o = o || {}; var c = SPILY_C, id = 'sp' + Math.random().toString(36).slice(2, 7);
+  return '<svg class="spily-svg" viewBox="-18 -30 144 144" role="img" aria-label="' + (o.label || 'Spily') + '">' +
+    '<defs><linearGradient id="' + id + 'g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + c.bodyHi + '"/><stop offset="1" stop-color="' + c.body + '"/></linearGradient></defs>' +
+    '<g class="sp-head">' +
+    // moño alto con su colet
+    '<circle cx="54" cy="-12" r="14" fill="' + c.hair + '"/><circle cx="49" cy="-16" r="4" fill="#9C82F0"/>' +
+    '<rect x="42" y="-2" width="24" height="7" rx="3.5" fill="' + c.band + '"/>' +
+    // cuerpo-cabeza, cuadrado redondeado como Slide
+    '<rect x="0" y="0" width="108" height="108" rx="26" fill="url(#' + id + 'g)"/>' +
+    // flequillo de lado
+    '<clipPath id="' + id + 'c"><rect x="0" y="0" width="108" height="108" rx="26"/></clipPath>' +
+    '<path clip-path="url(#' + id + 'c)" d="M-2,-2 H110 V15 Q86,9 64,15 Q44,21 32,35 Q24,24 -2,31 Z" fill="' + c.hair + '"/>' +
+    '<path clip-path="url(#' + id + 'c)" d="M70,6 Q84,4 96,9" stroke="#9C82F0" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+    // ojos de reojo (como Slide) con pestañas
+    '<path fill="' + c.white + '" d="M24,50 A11,11 0 0,0 46,50 Z"/><path fill="' + c.white + '" d="M62,50 A11,11 0 0,0 84,50 Z"/>' +
+    '<g class="sp-pp"><circle fill="' + c.ink + '" cx="41" cy="53" r="4.6"/><circle fill="' + c.ink + '" cx="79" cy="53" r="4.6"/></g>' +
+    '<g class="sp-ld" stroke="' + c.ink + '" stroke-linecap="round"><path stroke-width="5" d="M22,48.5 L48,48.5 M60,48.5 L86,48.5"/>' +
+    '<path stroke-width="3.2" d="M22,48.5 L14.5,46.5 M23.5,48 L17.5,42.5 M86,48.5 L93.5,46.5 M84.5,48 L90.5,42.5"/></g>' +
+    '<ellipse cx="29" cy="65" rx="7" ry="4" fill="' + c.blush + '" opacity=".55"/><ellipse cx="79" cy="65" rx="7" ry="4" fill="' + c.blush + '" opacity=".55"/>' +
+    // sonrisa de lado, con flow
+    '<path class="sp-mouth" d="M46,69 Q55,75 64,67" stroke="' + c.ink + '" stroke-width="3.6" fill="none" stroke-linecap="round"/>' +
+    '<ellipse class="sp-open" cx="55" cy="70" rx="6.5" ry=".1" fill="' + c.ink + '" opacity="0"/>' +
+    // audífonos
+    '<path d="M-4,50 C-6,-20 114,-20 112,50" stroke="' + c.phone + '" stroke-width="8" fill="none" stroke-linecap="round"/>' +
+    '<g class="sp-cups"><rect x="-13" y="34" width="20" height="38" rx="9" fill="' + c.phone + '"/><rect class="sp-glow" x="-9" y="39" width="12" height="28" rx="6" fill="' + c.cupL + '"/>' +
+    '<rect x="101" y="34" width="20" height="38" rx="9" fill="' + c.phone + '"/><rect class="sp-glow" x="105" y="39" width="12" height="28" rx="6" fill="' + c.cupR + '"/></g>' +
+    '</g></svg>';
+}
+// Cara pequeña para la esquina de las portadas
+function spilyMini(x, y, s) {
+  return '<svg x="' + x + '" y="' + y + '" width="' + s + '" height="' + s + '" viewBox="-18 -30 144 144">' + spilySVG().replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '') + '</svg>';
+}
+
+var TRACKS_ART = [
+  { lines: ['Pixel Heart', 'Overload'], a: '#FF3FA4', b: '#7B2FF7', c: '#2A0B4F' },
+  { lines: ['Rumbo', 'a Sky'], a: '#4FA8FF', b: '#FFB38A', c: '#2B6BE0' },
+  { lines: ['Fire', 'Inside'], a: '#FF7A1F', b: '#C2153A', c: '#3A0618' },
+  { lines: ['Toma el', 'control'], a: '#2EE59D', b: '#0E8FA6', c: '#062A33' },
+  { lines: ['The Mother', 'Star'], a: '#FFC94A', b: '#5B3FC4', c: '#120C3D' },
+  { lines: ['Beyond the', 'Known Horizon'], a: '#22D3EE', b: '#8B3FD9', c: '#12062E' },
+  { lines: ['El mismo viaje', 'es mi hogar'], a: '#FF9A5A', b: '#C2457A', c: '#3A1F5E' },
+  { lines: ['Diamantes', 'Infinitos'], a: '#5EEAD4', b: '#A855F7', c: '#0B1033' },
+];
+function star(cx, cy, r1, r2, n) {
+  var p = []; for (var k = 0; k < n * 2; k++) { var r = k % 2 ? r2 : r1, an = Math.PI * k / n - Math.PI / 2; p.push((cx + r * Math.cos(an)).toFixed(1) + ',' + (cy + r * Math.sin(an)).toFixed(1)); }
+  return p.join(' ');
+}
+function coverSVG(i, o) {
+  o = o || {}; var t = TRACKS_ART[i], id = 'cv' + i + Math.random().toString(36).slice(2, 6), art = '', bg = '';
+  var R = function (s) { return s.replace(/#ID/g, id); };
+  if (i === 0) { // corazón de píxeles
+    bg = R('<linearGradient id="#IDbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2A0B4F"/><stop offset=".55" stop-color="#7B2FF7"/><stop offset="1" stop-color="#FF3FA4"/></linearGradient>');
+    var H = ['..XX...XX..', '.XXXX.XXXX.', 'XXXXXXXXXXX', 'XXXXXXXXXXX', 'XXXXXXXXXXX', '.XXXXXXXXX.', '..XXXXXXX..', '...XXXXX...', '....XXX....', '.....X.....'];
+    var cell = 15, ox = 150 - 5.5 * cell, oy = 38;
+    art += '<g filter="url(#' + id + 'gl)">';
+    H.forEach(function (row, r) { for (var k = 0; k < row.length; k++) if (row[k] === 'X') {
+      var hi = (r < 3 && k > 1 && k < 4) ? '#FFFFFF' : (r + k) % 5 === 0 ? '#FFB3E1' : '#FF4FB0';
+      art += '<rect x="' + (ox + k * cell) + '" y="' + (oy + r * cell) + '" width="' + (cell - 2) + '" height="' + (cell - 2) + '" rx="2" fill="' + hi + '"/>'; } });
+    art += '</g>';
+    [[34, 40], [250, 60], [262, 150], [40, 150], [220, 28]].forEach(function (p, k) { art += '<rect x="' + p[0] + '" y="' + p[1] + '" width="' + (8 - k % 3 * 2) + '" height="' + (8 - k % 3 * 2) + '" fill="#FFE3F5" opacity=".85"/>'; });
+  } else if (i === 1) { // rumbo al cielo
+    bg = R('<linearGradient id="#IDbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B6BE0"/><stop offset=".5" stop-color="#7FB8FF"/><stop offset="1" stop-color="#FFC9A0"/></linearGradient>');
+    art += '<circle cx="222" cy="70" r="34" fill="#FFE7A8" opacity=".95"/><circle cx="222" cy="70" r="52" fill="#FFE7A8" opacity=".25"/>';
+    var cloud = function (x, y, s, op) { return '<g transform="translate(' + x + ',' + y + ') scale(' + s + ')" fill="#fff" opacity="' + op + '"><rect x="0" y="16" width="90" height="26" rx="13"/><circle cx="30" cy="18" r="18"/><circle cx="56" cy="14" r="22"/></g>'; };
+    art += cloud(14, 120, 1, .95) + cloud(180, 150, .8, .9) + cloud(110, 40, .55, .7);
+    art += '<path d="M40,190 C90,170 120,110 190,92" stroke="#fff" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round" fill="none" opacity=".9"/>';
+    art += '<g transform="translate(192,90) rotate(-28)"><polygon points="0,0 46,-14 10,8" fill="#fff"/><polygon points="10,8 46,-14 16,20" fill="#DCE9FF"/><polygon points="10,8 16,20 20,11" fill="#B8CFF5"/></g>';
+  } else if (i === 2) { // fuego por dentro
+    bg = R('<radialGradient id="#IDbg" cx=".5" cy=".42" r=".7"><stop offset="0" stop-color="#FF8A3D"/><stop offset=".45" stop-color="#C2153A"/><stop offset="1" stop-color="#3A0618"/></radialGradient>');
+    art += '<circle cx="150" cy="112" r="80" fill="none" stroke="#FFD9A0" stroke-width="3" opacity=".5"/><circle cx="150" cy="112" r="94" fill="none" stroke="#FFD9A0" stroke-width="1.5" opacity=".25"/>';
+    art += '<g filter="url(#' + id + 'gl)"><path d="M150,36 C176,72 206,92 200,132 C196,166 172,186 150,186 C126,186 102,168 100,136 C98,108 116,96 124,74 C132,92 136,100 146,104 C140,80 142,58 150,36 Z" fill="#FF7A1F"/>' +
+      '<path d="M150,82 C166,104 182,118 178,142 C175,164 162,176 150,176 C136,176 122,164 122,144 C122,126 134,118 138,104 C142,116 146,120 152,122 C148,108 146,96 150,82 Z" fill="#FFC23D"/>' +
+      '<path d="M150,124 C158,136 166,144 164,156 C162,166 156,170 150,170 C143,170 136,164 136,156 C136,148 142,144 146,138 C148,144 150,146 152,146 C150,140 148,132 150,124 Z" fill="#FFF3C4"/></g>';
+  } else if (i === 3) { // toma el control: mezcladora
+    bg = R('<linearGradient id="#IDbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#062A33"/><stop offset="1" stop-color="#0E5E6F"/></linearGradient>');
+    art += '<rect x="44" y="34" width="212" height="160" rx="22" fill="#08343F" stroke="#2EE59D" stroke-opacity=".35" stroke-width="2"/>';
+    [[86, 64, 40], [150, 64, 110], [214, 64, 250]].forEach(function (k) {
+      var an = (k[2] - 90) * Math.PI / 180;
+      art += '<circle cx="' + k[0] + '" cy="' + k[1] + '" r="18" fill="#0B4654" stroke="#2EE59D" stroke-width="3"/><line x1="' + k[0] + '" y1="' + k[1] + '" x2="' + (k[0] + 13 * Math.cos(an)).toFixed(1) + '" y2="' + (k[1] + 13 * Math.sin(an)).toFixed(1) + '" stroke="#C8FFE6" stroke-width="4" stroke-linecap="round"/>';
+    });
+    [[70, .3], [112, .7], [154, .45], [196, .85], [238, .2]].forEach(function (f) {
+      var y = 172 - f[1] * 66;
+      art += '<rect x="' + (f[0] - 3) + '" y="100" width="6" height="76" rx="3" fill="#0B4654"/><rect x="' + (f[0] - 3) + '" y="' + y + '" width="6" height="' + (176 - y) + '" rx="3" fill="#2EE59D" opacity=".7"/><rect x="' + (f[0] - 13) + '" y="' + (y - 7) + '" width="26" height="14" rx="5" fill="#C8FFE6"/>';
+    });
+  } else if (i === 4) { // la estrella madre
+    bg = R('<radialGradient id="#IDbg" cx=".5" cy=".38" r=".75"><stop offset="0" stop-color="#5B3FC4"/><stop offset=".6" stop-color="#21166B"/><stop offset="1" stop-color="#120C3D"/></radialGradient>');
+    for (var s = 0; s < 22; s++) { var x = (s * 137) % 290 + 5, y = (s * 71) % 200 + 6, r = s % 4 === 0 ? 2.2 : 1.2; art += '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="#fff" opacity="' + (.4 + (s % 3) * .2) + '"/>'; }
+    art += '<circle cx="150" cy="108" r="74" fill="#FFC94A" opacity=".12"/><circle cx="150" cy="108" r="52" fill="#FFC94A" opacity=".18"/>';
+    art += '<polygon filter="url(#' + id + 'gl)" points="' + star(150, 112, 62, 27, 5) + '" fill="#FFC94A" stroke="#FFC94A" stroke-width="10" stroke-linejoin="round"/>';
+    art += '<polygon points="' + star(150, 112, 30, 13, 5) + '" fill="#FFF1C2" opacity=".7"/>';
+    art += '<polygon points="' + star(222, 170, 15, 7, 5) + '" fill="#FFE08A" stroke="#FFE08A" stroke-width="4" stroke-linejoin="round"/>';
+  } else if (i === 6) { // el mismo viaje es mi hogar: furgoneta-casita en la carretera al atardecer
+    bg = R('<linearGradient id="#IDbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A2A7A"/><stop offset=".45" stop-color="#C2457A"/><stop offset=".7" stop-color="#FF9A5A"/><stop offset=".71" stop-color="#3A1F5E"/><stop offset="1" stop-color="#2A1645"/></linearGradient>');
+    art += '<circle cx="150" cy="200" r="50" fill="#FFD27A" opacity=".95"/><circle cx="150" cy="200" r="68" fill="#FFD27A" opacity=".2"/>';
+    art += '<path d="M0,214 L40,170 L78,200 L120,150 L170,206 L214,160 L256,196 L300,166 L300,214 Z" fill="#6B2E6E" opacity=".85"/>';
+    art += '<rect x="0" y="212" width="300" height="88" fill="#2A1645"/>';
+    art += '<path d="M150,213 C140,240 90,250 60,300 L120,300 C140,262 160,244 154,213 Z" fill="#4A2A6A"/>';
+    art += '<path d="M151,218 C146,238 120,252 98,282" stroke="#FFD27A" stroke-width="2.5" stroke-dasharray="7 8" fill="none" opacity=".8"/>';
+    for (var s3 = 0; s3 < 10; s3++) art += '<circle cx="' + ((s3 * 89) % 280 + 10) + '" cy="' + ((s3 * 37) % 90 + 12) + '" r="1.2" fill="#fff" opacity=".7"/>';
+    // la furgoneta con techo de casita
+    art += '<g transform="translate(112 132) scale(.9)"><polygon points="2,30 40,4 78,30" fill="#FF4FD8"/><rect x="36" y="-6" width="9" height="18" fill="#FF4FD8"/>' +
+      '<rect x="0" y="28" width="82" height="44" rx="10" fill="#F7F3FF"/><rect x="8" y="36" width="20" height="16" rx="4" fill="#7FD3FF"/><rect x="34" y="36" width="20" height="16" rx="4" fill="#7FD3FF"/>' +
+      '<rect x="60" y="36" width="15" height="28" rx="3" fill="#C2457A"/><path d="M18,62 c-3,-4 -9,-1 -5,4 l5,4 l5,-4 c4,-5 -2,-8 -5,-4z" fill="#FF4F9A"/>' +
+      '<circle cx="18" cy="74" r="8" fill="#251A4A"/><circle cx="64" cy="74" r="8" fill="#251A4A"/><circle cx="18" cy="74" r="3" fill="#C4B2F6"/><circle cx="64" cy="74" r="3" fill="#C4B2F6"/></g>';
+    art += '<path d="M150,186 q8,-10 16,0" stroke="#fff" stroke-width="2" fill="none" opacity=".0"/>';
+  } else if (i === 7) { // diamantes infinitos
+    bg = R('<radialGradient id="#IDbg" cx=".5" cy=".4" r=".75"><stop offset="0" stop-color="#2E1F7A"/><stop offset=".6" stop-color="#141052"/><stop offset="1" stop-color="#0B1033"/></radialGradient>' +
+      '<linearGradient id="#IDd1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E0FFFB"/><stop offset="1" stop-color="#5EEAD4"/></linearGradient>' +
+      '<linearGradient id="#IDd2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5D0FE"/><stop offset="1" stop-color="#A855F7"/></linearGradient>');
+    art += '<path d="M60,128 C60,92 112,92 150,128 C188,164 240,164 240,128 C240,92 188,92 150,128 C112,164 60,164 60,128 Z" fill="none" stroke="#5EEAD4" stroke-width="7" opacity=".55" filter="url(#' + id + 'gl)"/>';
+    art += R('<g transform="translate(150 118)" filter="url(##IDgl)"><polygon points="-52,-22 -30,-46 30,-46 52,-22 0,52" fill="url(##IDd2)"/>' +
+      '<polygon points="-52,-22 -18,-22 0,52" fill="url(##IDd1)"/><polygon points="18,-22 52,-22 0,52" fill="#7C3AED" opacity=".85"/><polygon points="-18,-22 18,-22 0,52" fill="#C4B5FD"/>' +
+      '<polygon points="-30,-46 -18,-22 -52,-22" fill="#E0FFFB"/><polygon points="-30,-46 30,-46 18,-22 -18,-22" fill="#F0ABFC"/><polygon points="30,-46 52,-22 18,-22" fill="#A78BFA"/></g>');
+    var spark = function (x, y, r) { return '<path d="M' + x + ',' + (y - r) + ' Q' + x + ',' + y + ' ' + (x + r) + ',' + y + ' Q' + x + ',' + y + ' ' + x + ',' + (y + r) + ' Q' + x + ',' + y + ' ' + (x - r) + ',' + y + ' Q' + x + ',' + y + ' ' + x + ',' + (y - r) + 'Z" fill="#fff"/>'; };
+    art += spark(206, 72, 12) + spark(86, 70, 8) + spark(232, 178, 7) + spark(66, 182, 6) + spark(150, 40, 6);
+  } else { // más allá del horizonte
+    bg = R('<linearGradient id="#IDbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12062E"/><stop offset=".55" stop-color="#4C1D95"/><stop offset=".62" stop-color="#8B3FD9"/><stop offset=".63" stop-color="#0A1A3A"/><stop offset="1" stop-color="#06122A"/></linearGradient>');
+    art += '<circle cx="150" cy="186" r="70" fill="#22D3EE" opacity=".2"/>';
+    art += '<clipPath id="' + id + 'hz"><rect x="0" y="0" width="300" height="188"/></clipPath>';
+    art += '<g clip-path="url(#' + id + 'hz)"><circle cx="150" cy="170" r="54" fill="#F472D0"/><circle cx="150" cy="170" r="54" fill="url(#' + id + 'pl)"/>' +
+      '<ellipse cx="150" cy="166" rx="96" ry="16" fill="none" stroke="#22D3EE" stroke-width="4" transform="rotate(-10 150 166)"/></g>';
+    art += '<line x1="0" y1="188" x2="300" y2="188" stroke="#7DF5FF" stroke-width="3"/>';
+    for (var g = -6; g <= 6; g++) art += '<line x1="150" y1="188" x2="' + (150 + g * 60) + '" y2="300" stroke="#22D3EE" stroke-width="1.5" opacity=".55"/>';
+    [204, 226, 258, 300].forEach(function (y) { art += '<line x1="0" y1="' + y + '" x2="300" y2="' + y + '" stroke="#22D3EE" stroke-width="1.5" opacity=".45"/>'; });
+    for (var s2 = 0; s2 < 16; s2++) art += '<circle cx="' + ((s2 * 97) % 290 + 5) + '" cy="' + ((s2 * 53) % 120 + 8) + '" r="1.3" fill="#fff" opacity=".7"/>';
+    bg += R('<linearGradient id="#IDpl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD1F0" stop-opacity=".9"/><stop offset="1" stop-color="#8B3FD9" stop-opacity=".2"/></linearGradient>');
+  }
+  var title = '<g font-family="\'Bricolage Grotesque\', \'Arial Rounded MT Bold\', sans-serif" font-weight="800" fill="#fff">';
+  var ty = t.lines.length > 1 ? 236 : 262;
+  t.lines.forEach(function (ln, k) { title += '<text x="20" y="' + (ty + k * 30) + '" font-size="' + (ln.length > 11 ? 25 : 29) + '" letter-spacing="-.5">' + ln + '</text>'; });
+  title += '</g>';
+  var shade = '<rect x="0" y="180" width="300" height="120" fill="url(#' + id + 'sh)"/>';
+  return '<svg class="cover-svg" viewBox="0 0 300 300" ' + (o.size ? 'width="' + o.size + '" height="' + o.size + '"' : '') + ' role="img" aria-label="Portada de ' + t.lines.join(' ') + '"><defs>' + bg +
+    '<linearGradient id="' + id + 'sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></linearGradient>' +
+    '<filter id="' + id + 'gl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>' +
+    '<rect width="300" height="300" fill="url(#' + id + 'bg)"/>' + art + shade +
+    '<text x="20" y="28" font-family="\'IBM Plex Sans\', sans-serif" font-weight="700" font-size="10" letter-spacing="2.5" fill="#fff" opacity=".8">RADIO DE SLIDE</text>' +
+    title + spilyMini(244, 244, 46) + '</svg>';
+}
+
+
+var ONAIR_ART = [{ a: '#FF4F6E', b: '#7B2FF7' }, { a: '#FFB13B', b: '#E0457B' }, { a: '#8B5CF6', b: '#2563EB' }, { a: '#2EE59D', b: '#7B2FF7' }, { a: '#3EA8FF', b: '#5B3FC4' }];
+var ONAIR_LINES = [['Frena un', 'poquito'], ['Tu obra', 'de arte'], ['Empezar', 'de nuevo'], ['Cuida', 'tu paz'], ['El lugar', 'correcto']];
+function onairSVG(j) {
+  var c = ONAIR_ART[j], id = 'oa' + j + Math.random().toString(36).slice(2, 6), rings = '';
+  for (var r = 0; r < 5; r++) rings += '<circle cx="150" cy="150" r="' + (70 + r * 26) + '" fill="none" stroke="' + c.a + '" stroke-width="2" opacity="' + (.45 - r * .08) + '"/>';
+  var t = '';
+  ONAIR_LINES[j].forEach(function (ln, k) { t += '<text x="20" y="' + (236 + k * 30) + '" font-size="29" letter-spacing="-.5">' + ln + '</text>'; });
+  return '<svg class="cover-svg" viewBox="0 0 300 300" role="img" aria-label="Spily al aire: ' + ONAIR_LINES[j].join(' ') + '"><defs>' +
+    '<radialGradient id="' + id + 'bg" cx=".5" cy=".4" r=".75"><stop offset="0" stop-color="' + c.b + '"/><stop offset="1" stop-color="#120A2B"/></radialGradient>' +
+    '<linearGradient id="' + id + 'sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></linearGradient></defs>' +
+    '<rect width="300" height="300" fill="url(#' + id + 'bg)"/>' + rings + spilyMini(65, 52, 170) +
+    '<g transform="translate(18 16)"><rect width="92" height="26" rx="13" fill="#E11D48"/><circle cx="15" cy="13" r="5" fill="#fff"/><text x="27" y="18" font-family="\'IBM Plex Sans\', sans-serif" font-weight="700" font-size="12" letter-spacing="1.5" fill="#fff">AL AIRE</text></g>' +
+    '<text x="282" y="33" text-anchor="end" font-family="\'IBM Plex Sans\', sans-serif" font-weight="700" font-size="10" letter-spacing="2.5" fill="#fff" opacity=".8">SPILY</text></svg>';
+}
+
+  // ---------- Radio de Spily ----------
+  (function () {
+    var box = document.getElementById('radioBox');
+    if (!box) return;
+    var TR = [{"slug":"pixel-heart-overload","title":"Pixel Heart Overload","dur":133.2,"bpm":104,"wave":[0.19,0.23,0.49,0.56,0.5,0.86,0.83,0.86,0.89,0.82,0.64,0.66,0.66,0.79,0.83,0.92,0.94,0.92,0.9,0.96,0.99,0.97,0.95,0.79,0.7,0.72,0.72,0.72,0.71,0.58,0.72,0.7,0.87,0.69,0.86,0.81,0.96,0.93,0.93,1.0,1.0,0.95,0.78,0.19,0.19,0.26,0.26,0.01]},{"slug":"rumbo-a-sky","title":"Rumbo a Sky","dur":178.4,"bpm":133,"wave":[0.26,0.71,0.5,0.62,0.61,0.89,0.87,0.88,0.78,0.88,0.89,0.88,0.68,0.69,0.74,0.7,0.6,0.97,0.98,0.99,0.88,0.98,0.99,0.98,0.86,0.88,0.89,0.89,0.71,0.87,0.9,0.89,0.74,0.69,0.81,0.66,0.64,0.87,1.0,0.94,0.92,0.98,1.0,0.86,0.68,0.49,0.44,0.02]},{"slug":"fire-inside","title":"Fire Inside","dur":177.3,"bpm":120,"wave":[0.37,0.45,0.53,0.63,0.41,0.35,0.38,0.35,0.46,0.57,0.61,0.62,0.51,0.52,0.47,0.74,0.58,0.73,0.99,0.95,0.97,0.64,0.99,0.88,0.98,0.86,0.45,0.39,0.46,0.48,0.58,0.47,0.65,0.73,0.59,0.96,0.95,1.0,0.62,0.91,0.97,0.97,0.78,0.5,0.28,0.31,0.32,0.1]},{"slug":"toma-el-control","title":"Toma el control","dur":161.5,"bpm":120,"wave":[0.54,0.42,0.47,0.51,0.45,0.84,0.78,0.81,0.79,0.75,0.58,0.47,0.59,0.55,0.7,1.0,0.94,0.95,0.84,0.86,0.89,0.96,0.97,0.74,0.8,0.88,0.91,0.89,0.83,0.58,0.47,0.56,0.55,0.68,1.0,0.91,0.96,0.82,0.84,0.9,0.95,0.96,0.73,0.35,0.34,0.24,0.21,0.1]},{"slug":"the-mother-star","title":"The Mother Star","dur":179.0,"bpm":114,"wave":[0.16,0.21,0.2,0.4,0.41,0.45,0.38,0.39,0.4,0.91,0.95,0.95,0.95,0.94,0.96,0.61,0.4,0.42,0.42,0.38,0.44,0.87,0.98,0.96,0.94,1.0,0.94,0.69,0.73,0.64,0.74,0.73,0.66,0.83,0.97,0.92,0.96,0.93,0.94,0.93,0.99,0.98,1.0,0.98,0.99,0.75,0.18,0.05]},{"slug":"beyond-the-known-horizon","title":"Beyond the Known Horizon","dur":178.6,"bpm":109,"wave":[0.28,0.36,0.34,0.55,0.65,0.64,0.63,0.66,0.61,0.7,0.98,0.89,0.95,0.94,0.93,0.77,0.62,0.62,0.65,0.63,0.68,0.66,0.85,0.97,0.96,0.97,0.94,0.94,0.9,0.99,0.97,0.98,0.97,0.93,0.97,0.35,0.29,0.4,0.77,0.95,0.93,0.98,0.96,1.0,0.79,0.39,0.34,0.09]},{"slug":"el-mismo-viaje-es-mi-hogar","title":"El mismo viaje es mi hogar","dur":175.7,"bpm":104,"wave":[0.59,0.58,0.56,0.76,0.8,0.93,0.87,0.74,0.77,0.83,0.9,0.83,0.87,0.97,0.94,0.97,0.96,0.98,1.0,0.97,0.81,0.99,0.98,0.81,0.9,0.86,0.87,0.85,0.79,0.44,0.47,0.52,0.49,0.42,0.36,0.38,0.38,0.4,0.4,0.73,0.92,0.97,0.96,0.94,1.0,0.94,0.98,0.42]},{"slug":"diamantes-infinitos","title":"Diamantes Infinitos","dur":174.7,"bpm":120,"wave":[0.4,0.49,0.71,0.86,0.71,0.79,0.83,0.81,0.76,0.44,0.41,0.68,0.58,0.85,0.94,0.9,0.94,0.95,0.97,0.99,0.95,0.96,0.78,0.8,0.89,0.66,0.44,0.6,0.65,0.77,0.89,0.93,0.9,0.96,0.92,0.99,0.94,1.0,0.87,0.79,0.8,0.76,0.76,0.17,0.16,0.14,0.02,0.03]}];
+    var SONGS = TR, VOZ = [{"slug":"al-aire-1-frena-un-poquito","title":"Frena un poquito","dur":51.9,"caps":[[2.6,9.82,"Estaba el otro día en un viaje largo, mirando por la ventana cómo el paisaje iba a mil por hora..."],[10.13,13.75,"y me di cuenta de que a veces llevamos la vida exactamente así."],[13.75,19.53,"Son las seis de la tarde, y si estás escuchándome, quiero pedirte un favor enorme:"],[19.91,20.96,"frena un poquito. Respira conmigo."],[21.33,26.87,"La vida no te está exigiendo velocidad hoy, te está pidiendo claridad."],[27.24,30.86,"Si sientes que vas tarde a tus propias metas, escúchame bien:"],[30.86,34.1,"llegar tarde no siempre significa que fallaste."],[34.36,36.75,"Aprende a abrazar tus propios tiempos."],[36.75,41.13,"Todo eso por lo que estás trabajando va a llegar en el momento indicado."],[41.54,43.19,"Confía en tu proceso."],[43.19,45.94,"Estás haciendo un gran trabajo..."],[46.23,47.14,"respira y déjate llevar."]],"mouth":"00023322110000001321066695952386456765442363104456656652132100000244995512549855405646300002442563054313731344378335344456699710434674321000000000000017767610585347662155555225434787454454434662022002333630013344403311221000001010100010100000148329311259992689339931220001712610964521612994332342000445203354202220233299410047666799962211000000000002455432033015304310000000034221036592154444212100000000039647695445613310641151156576744311467545321000000321130054454443410013552223442000000000000028357414203599310099834503310089125414551243110000322015134443323211000000002964951099533730455453211344326423244032450311424851101000000001105500466444684263225310331001894024210165210111100000000099566797252173511312720277851364534302266561432973353333335642234330067321000000000554100356653330351254211000000003135242223333334324697750388899101100000000121110166442000000133265203114132221000000"},{"slug":"al-aire-2-tu-obra-de-arte","title":"Tu obra de arte","dur":48.6,"caps":[[2.4,4.42,"A veces me pongo a dibujar en mi libreta;"],[4.67,8.43,"borro, trazo de nuevo, intentando que quede perfecto."],[8.82,11.51,"Y pensaba que así somos con nosotros mismos."],[12.06,14.48,"¡Hola! Qué lindo es acompañarlos hoy."],[14.48,17.21,"Quiero decirte algo importante:"],[17.67,20.69,"cuida tu esencia como si fuera tu obra de arte más valiosa."],[20.69,29.1,"Allá afuera el mundo a veces intenta redibujarte, pero tu nombre, tu autenticidad, es lo único verdaderamente tuyo."],[29.37,33.73,"Si hoy sientes que te perdiste un poco intentando encajar, no pasa nada..."],[33.73,36.01,"toma tu lápiz y vuelve a empezar."],[36.01,40.29,"Eres increíble tal y como eres, con tus rayones y tus colores."],[40.29,43.88,"Sigue siendo tú, que lo estás haciendo de maravilla."]],"mouth":"00009997234145348359733342364445444359720100000001127899534543200353224442345755563000028706441553331230134610064311159100110000000035074524886640044111243126622421232231430231333121100000000000000499499999960023022014202303100127845344333683651751974982452168321000000025454411530277435522420352101100000000005895811441167531530223122033530135424543566200444444577622495347712110000000109939711596895155332224634512313430555245465334301892001000000044410334699652221000873054314212349973000005423475002653301545543753399564344314104421110000000001356741354223123141342231024530497023422330353234233115731000000341241143455453100000000199371155897013410005533397525631321263000000000393411335103443443352000386562055345452210000044225324741999444210541431076774211000000001286253134333400565410000524310751321143333523733563332542110000000"},{"slug":"al-aire-3-empezar-de-nuevo","title":"Empezar de nuevo","dur":49.4,"caps":[[2.4,11.35,"Hoy llegué a casa, me senté un rato en silencio con mi perro al lado, y me quedé pensando en esos días donde sentimos que simplemente no damos más."],[11.71,17.62,"Si hoy fue uno de esos días pesados para ti, quiero que me escuches con atención:"],[17.62,21.56,"se vale estar cansado, se vale dudar, pero no te me rindas."],[21.56,26.35,"Un ganador es solo alguien que decidió intentarlo una vez más con el corazón roto."],[26.62,32.18,"Mientras sigas respirando, tienes la oportunidad inmensa de EMPEZAR DE NUEVO."],[32.18,35.4,"Usa eso que hoy te falta como tu combustible para mañana."],[35.77,41.65,"Llora si lo necesitas, suelta el peso, pero mañana te levantas con toda la fuerza del mundo."],[42.0,44.6,"Yo creo en ti. No estás solo en esto."]],"mouth":"0000984463494039931243200000131244043425990344123366442133023332044246334775431000000000158605774044322643333321332144555214333123302322210022111113530344444401434433444333221022101100000000000001267964044433333213323353200321225555210534102331000000027622344210522320344112212221100000000001245433899633210251023311343211000001239437974645535885100000000645555799706656224321200100000000027536946646940452223978699832443254521233343135227524840038748745315784203545128642265335620110000000000365225211372751451034797324400000444424630420233237710056555566542484691097420573235998459765995221000000000383259983241065750331595126033330412732332109867609664433574211000000014457998424363441212231021110001233687038610585223200000005663443459947124445963143210643100299898940395127664333211100000000225840029976555202210000001446220432333554433211100000000"},{"slug":"al-aire-4-cuida-tu-paz","title":"Cuida tu paz","dur":41.6,"caps":[[2.4,11.27,"El otro día jugaba un partido en la noche con mis amigos, riéndome a carcajadas, y recordé lo vital que es rodearse de gente que te da paz."],[11.27,13.65,"Por eso, aquí va un consejo de amiga a amigo:"],[14.08,19.5,"no sacrifiques tu propia tranquilidad por cargar responsabilidades que no son tuyas."],[19.5,26.39,"Tienes un corazón gigante y siempre quieres ayudar, pero no tienes que apagar tu luz para que otros brillen."],[26.39,29.56,"Y si tu instinto te dice que algo ahí no cuadra..."],[29.83,34.13,"hazle caso. Tienes derecho a proteger tu espacio y tu energía."],[34.38,36.85,"Cuídate mucho, priorízate hoy, porque te lo mereces."]],"mouth":"00009694156443671342999442950234754744542516435225234202100001654498214414921774039239995321000000045690353454552453003666302554227677931244310345131130344510651011000000000789952275119302349331432189113237942344189307999435411210000000014556224203411411621131019703302450223459930162023239425103321333124576422014443453334520334452100000000100293973321295932663400243179953104204511123520360153514533369982000000554452013432104407469203443621254302554124323561352100000000062330245310532330364331220133453255334566500187653320000000026323510321100000016579429999723640340321441034110466222344016214433111133311000000000048483054555521211100002568746652241055579420000000521404343343631100011000000"},{"slug":"al-aire-5-el-lugar-correcto","title":"Estás en el lugar correcto","dur":47.2,"caps":[[2.4,7.8,"Para ti que me escuchas a esta hora, quizás sintiendo que la noche está demasiado callada..."],[8.15,10.13,"quiero decirte algo con mucho cariño."],[10.63,16.69,"Sentirse solo un ratito no es malo, a veces es el universo dándote espacio para escucharte a ti mismo."],[17.13,22.22,"Para avanzar y crecer, a veces tenemos que dejar peso atrás;"],[22.56,23.57,"es física pura, es la vida misma."],[23.98,33.52,"No midas lo que vales por todo lo que lograste tachar de tu lista hoy, mídete por cómo fuiste capaz de sonreír a pesar del cansancio."],[33.8,33.52,"Todo va a estar bien."],[33.8,37.94,"Eres fuerte, valiente y las cosas buenas están buscándote."],[38.24,39.6,"Cierra los ojos un segundo..."],[40.03,42.73,"estás exactamente en el lugar correcto."]],"mouth":"0000235301531546530151452344212555554431000000013223422225960455431445555323220233422222224544203324433321000000000000026466523520354443401334445733212322321000000000000222012433347243542341123024234332544422000000002464433232210043355888777333456554114230144243204343204043510430255532212100000000255655654334565603452245510000010455533332200467644413442134204342402343221000000013411543531430045331000000013435547775444312111000000001668634567698239135599583103951000798877617764499106298029949913344107987732100000039999404303930024526213820514705962522765357656940154047233998396139331995311210000000569766455421374434542200000043432002986500210003996669999706600111668420452863424984632006231199655511993230021000000136344342341233444342443210000000000121243200401445472003545665134567572452023232000000000"}];
+    var IDS = [{"slug":"id-1","dur":7.9,"v0":0.9,"mouth":"0487421564102799887766686123000012200002424411995123211499224302644359733200013777766545331101000"},{"slug":"id-2","dur":11.4,"v0":0.9,"mouth":"3310635403534465465576746960353655211355462000000123441001652235356022310169998666210001102454964300059625911199147211139984221110000000000023489543454433322111000000"},{"slug":"id-3","dur":11.3,"v0":0.9,"mouth":"24210077646923475321200000000000111111111111111111100000000000012359996733210000000001110000000042079562000000000100000000000001465995410000000014632969900765410000"},{"slug":"id-4","dur":7.0,"v0":0.9,"mouth":"2542213469950661003695359987745232100001013689777777854564232200120030001000100"},{"slug":"id-5","dur":10.5,"v0":0.9,"mouth":"15012213225321012201332422012311242132004531403435342223214102311331225630000001232117841111001322000000000299961123100000000059967633675333213432000"},{"slug":"id-6","dur":6.9,"v0":0.9,"mouth":"69427721000023310312274033224212442100000023741276547969204955202953115898200"},{"slug":"id-7","dur":10.4,"v0":0.9,"mouth":"011289583959975310000035451045321000025536402210000451534575630000000001110000000036057365335565351231157220000014300122311222000013799449975544000"},{"slug":"id-8","dur":16.4,"v0":0.9,"mouth":"24566104562232106883453113432221111100000000012233441001123311343202233304323532310020000122012221211221000000000000004109353411421789759737423322000000163152039931343000195442542510230796497676422312012100000778197014504975694663000000099732456799339312996242110000"},{"slug":"id-9","dur":14.2,"v0":0.9,"mouth":"0259764411100000000000000000000000002364111145225410299940466222586556864212332331111000002233432111000000010100000000154436214563014401121221100000010480112972200025579955653420001310992014814433325710029931100009999531100"}], idN = 0, inId = null, firstPlay = true;
+    TR = [];
+    SONGS.forEach(function (t, i) {
+      t.kind = 'song'; t.art = TRACKS_ART[i]; t.cov = function () { return coverSVG(i); }; TR.push(t);
+      var v = VOZ[i];
+      if (v) {
+        v.kind = 'voz'; v.art = ONAIR_ART[i]; v.cov = function () { return onairSVG(i); }; v.bpm = 0; v.v0 = v.caps.length ? v.caps[0][0] : 2;
+        var n = 48, m = v.mouth, w = [];
+        for (var q = 0; q < n; q++) { var a = Math.floor(q * m.length / n), b = Math.floor((q + 1) * m.length / n), sum = 0; for (var r = a; r < b; r++) sum += +m[r]; w.push(Math.min(1, .15 + sum / Math.max(1, b - a) / 6)); }
+        v.wave = [.1, .12, .15].concat(w).concat([.3, .2]);
+        TR.push(v);
+      }
+    });
+    var $r = function (id) { return document.getElementById(id); };
+    var au = $r('rAudio'), cur = -1, vol = 80, bkOn = 0, capCur = -1;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var PLAY = '<path d="M8 5l12 7-12 7z"/>', PAUSE = '<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>';
+    function fmt(s) { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+    $r('spily').innerHTML = spilySVG({ label: 'Spily, la DJ' });
+    $r('rMiniFace').innerHTML = spilySVG({ label: '' });
+    var rlf = document.getElementById('rlFace'); if (rlf) rlf.innerHTML = spilySVG({ label: '' });
+    // copia flotante del botón: aparece al bajar por la página, con el globo de Spily
+    var rlink = rlf && rlf.parentNode, fl = null;
+    if (rlink) {
+      fl = rlink.cloneNode(true); fl.removeAttribute('id'); fl.classList.add('radiofloat'); fl.setAttribute('tabindex', '-1'); fl.setAttribute('aria-hidden', 'true');
+      var ff = fl.querySelector('.rl-face'); ff.removeAttribute('id'); ff.innerHTML = spilySVG({ label: '' });
+      document.body.appendChild(fl);
+    }
+    var hdrIn = true, radioIn = false, sayT = 0, lastSay = 0;
+    function sayHey(el) {
+      var b = el && el.querySelector('.rl-say'); if (!b || !au.paused) return;
+      b.classList.add('on'); lastSay = Date.now(); clearTimeout(sayT); sayT = setTimeout(function () { b.classList.remove('on'); }, 4200);
+    }
+    function floatState() {
+      if (!fl) return;
+      var show = !hdrIn && !radioIn && au.paused;
+      var was = fl.classList.contains('show');
+      fl.classList.toggle('show', show);
+      fl.setAttribute('tabindex', show ? '0' : '-1'); fl.setAttribute('aria-hidden', String(!show));
+      if (show && !was && Date.now() - lastSay > 8000) setTimeout(function () { if (fl.classList.contains('show')) sayHey(fl); }, 500);
+    }
+    if ('IntersectionObserver' in window && rlink) {
+      new IntersectionObserver(function (es) { hdrIn = es[0].isIntersecting; floatState(); }).observe(document.querySelector('header'));
+      new IntersectionObserver(function (es) { radioIn = es[0].isIntersecting; floatState(); }, { threshold: .1 }).observe(box);
+    }
+    setTimeout(function () { if (hdrIn) sayHey(rlink); }, 2600);
+    setInterval(function () { if (Date.now() - lastSay > 45000) sayHey(fl && fl.classList.contains('show') ? fl : (hdrIn ? rlink : null)); }, 5000);
+    au.addEventListener('play', floatState); au.addEventListener('pause', floatState);
+    var mOpen = $r('spily').querySelector('.sp-open'), mSmirk = $r('spily').querySelector('.sp-mouth');
+    var head = $r('spily').querySelector('.sp-head'), pp = $r('spily').querySelector('.sp-pp'), glows = $r('spily').querySelectorAll('.sp-glow');
+    var eq = $r('rEq'); for (var k = 0; k < 11; k++) eq.appendChild(document.createElement('i'));
+    var eqs = eq.children;
+    // lista
+    var list = $r('rList');
+    TR.forEach(function (t, i) {
+      var li = document.createElement('li');
+      li.innerHTML = '<button type="button"' + (t.kind === 'voz' ? ' class="voz"' : '') + '><span class="th">' + t.cov() + '</span><span class="nm"></span><span class="live" aria-hidden="true"><i></i><i></i><i></i></span><span class="du">' + fmt(t.dur) + '</span></button>';
+      li.querySelector('.nm').textContent = t.title;
+      if (t.kind === 'voz') li.querySelector('.nm').insertAdjacentHTML('afterbegin', '<small>Spily al aire</small>');
+      li.querySelector('button').addEventListener('click', function () { if (i === cur) toggle(); else { load(i); play(); } });
+      list.appendChild(li);
+    });
+    var btns = list.querySelectorAll('button');
+    var bars = $r('rBars');
+    function load(i) {
+      cur = (i + TR.length) % TR.length;
+      var t = TR[cur], art = t.art; capCur = -1; inId = null;
+      au.src = 'radio/' + t.slug + '.mp3';
+      $r('rTitle').textContent = t.title;
+      $r('rCover').innerHTML = t.cov() + (t.kind === 'voz' ? '<div class="cap" id="rCap" aria-live="polite"></div>' : '');
+      box.classList.toggle('voz', t.kind === 'voz');
+      $r('rDur').textContent = fmt(t.dur); $r('rPos').textContent = '0:00';
+      bars.innerHTML = t.wave.map(function (w) { return '<span style="height:' + Math.round(6 + w * 32) + 'px"></span>'; }).join('');
+      box.style.setProperty('--a', art.a); box.style.setProperty('--b', art.b);
+      document.documentElement.style.setProperty('--mini-a', art.a);
+      // fondo inmersivo: la portada, enorme y difuminada
+      var nb = $r('bk' + (1 - bkOn)), ob = $r('bk' + bkOn);
+      nb.innerHTML = t.cov(); nb.classList.add('on'); ob.classList.remove('on'); bkOn = 1 - bkOn;
+      [].forEach.call(btns, function (b, k) { b.setAttribute('aria-current', String(k === cur)); });
+      $r('rMiniT').textContent = t.title;
+      if ('mediaSession' in navigator) {
+        try { navigator.mediaSession.metadata = new MediaMetadata({ title: t.title, artist: 'Spily', album: 'Radio de Slide' }); } catch (e) {}
+      }
+      say();
+    }
+    function play() { au.play().catch(function () {}); }
+    // identificador de la emisora antes de la canción
+    function playWithId(i) {
+      load(i);
+      var d = IDS[idN++ % IDS.length]; inId = d;
+      au.src = 'radio/' + d.slug + '.mp3'; say(); play();
+    }
+    function toggle() {
+      if (au.paused && firstPlay && IDS.length && TR[cur].kind === 'song' && !au.currentTime) { firstPlay = false; playWithId(cur); return; }
+      firstPlay = false;
+      if (au.paused) play(); else au.pause();
+    }
+    function say() {
+      var s = $r('rSay');
+      if (au.paused) s.innerHTML = '¿Le damos <b>play</b>?';
+      else if (inId) s.innerHTML = '<span class="dot"></span>Estás en la <b>Radio de Slide</b>';
+      else if (TR[cur].kind === 'voz') { s.innerHTML = '<span class="dot"></span>Al aire: <b></b>'; s.querySelector('b').textContent = TR[cur].title; }
+      else { s.innerHTML = 'Sonando: <b></b>'; s.querySelector('b').textContent = TR[cur].title; }
+    }
+    function state() {
+      var on = !au.paused;
+      box.classList.toggle('playing', on);
+      document.documentElement.classList.toggle('radio-on', on);
+      $r('rPlayIco').innerHTML = on ? PAUSE : PLAY;
+      $r('rPlay').setAttribute('aria-label', on ? 'Pausar' : 'Reproducir');
+      $r('rMiniBtn').querySelector('svg').innerHTML = on ? PAUSE : PLAY;
+      $r('rMiniBtn').setAttribute('aria-label', on ? 'Pausar' : 'Reproducir');
+      say(); mini();
+    }
+    au.addEventListener('play', state); au.addEventListener('pause', state);
+    au.addEventListener('ended', function () {
+      if (inId) { inId = null; au.src = 'radio/' + TR[cur].slug + '.mp3'; say(); play(); return; }
+      if (IDS.length && TR[(cur + 1) % TR.length].kind === 'song') playWithId(cur + 1); else { load(cur + 1); play(); }
+    });
+    au.addEventListener('timeupdate', function () {
+      if (inId) return;
+      var d = au.duration || TR[cur].dur, f = au.currentTime / d;
+      $r('rPos').textContent = fmt(au.currentTime);
+      var n = Math.floor(f * bars.children.length);
+      [].forEach.call(bars.children, function (b, k) { b.classList.toggle('on', k < n); });
+      bars.setAttribute('aria-valuenow', String(Math.round(f * 100)));
+    });
+    $r('rPlay').addEventListener('click', toggle);
+    $r('rMiniBtn').addEventListener('click', toggle);
+    $r('rPrev').addEventListener('click', function () { var was = !au.paused; if (au.currentTime > 4) au.currentTime = 0; else { load(cur - 1); } if (was) play(); });
+    $r('rNext').addEventListener('click', function () { var was = !au.paused; load(cur + 1); if (was) play(); });
+    if ('mediaSession' in navigator) {
+      try {
+        navigator.mediaSession.setActionHandler('previoustrack', function () { load(cur - 1); play(); });
+        navigator.mediaSession.setActionHandler('nexttrack', function () { load(cur + 1); play(); });
+      } catch (e) {}
+    }
+    // buscar en la onda
+    function seekAt(x) {
+      var r = bars.getBoundingClientRect(), f = Math.min(1, Math.max(0, (x - r.left) / r.width));
+      var d = au.duration || TR[cur].dur;
+      if (au.readyState === 0) { au.load(); }
+      au.currentTime = f * d;
+    }
+    var seeking = false;
+    bars.addEventListener('pointerdown', function (e) { seeking = true; try { bars.setPointerCapture(e.pointerId); } catch (x) {} seekAt(e.clientX); });
+    bars.addEventListener('pointermove', function (e) { if (seeking) seekAt(e.clientX); });
+    ['pointerup', 'pointercancel'].forEach(function (ev) { bars.addEventListener(ev, function () { seeking = false; }); });
+    bars.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { au.currentTime = Math.min((au.duration || 0), au.currentTime + 5); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { au.currentTime = Math.max(0, au.currentTime - 5); e.preventDefault(); }
+    });
+    // volumen, igual que en la app
+    var vEl = $r('rVol');
+    function setVol(v) {
+      vol = Math.round(Math.min(100, Math.max(0, v)));
+      au.volume = vol / 100;
+      $r('rVolFill').style.width = 'calc(32px + (100% - 32px) * ' + (vol / 100) + ')';
+      $r('rVolKnob').textContent = vol;
+      vEl.setAttribute('aria-valuenow', String(vol));
+    }
+    function volAt(x) { var r = vEl.getBoundingClientRect(); setVol(((x - r.left - 20) / (r.width - 40)) * 100); }
+    var vdrag = false;
+    vEl.addEventListener('pointerdown', function (e) { vdrag = true; try { vEl.setPointerCapture(e.pointerId); } catch (x) {} volAt(e.clientX); });
+    vEl.addEventListener('pointermove', function (e) { if (vdrag) volAt(e.clientX); });
+    ['pointerup', 'pointercancel'].forEach(function (ev) { vEl.addEventListener(ev, function () { vdrag = false; }); });
+    vEl.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { setVol(vol + 5); e.preventDefault(); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { setVol(vol - 5); e.preventDefault(); }
+    });
+    $r('rVolDn').addEventListener('click', function () { setVol(vol - 10); });
+    $r('rVolUp').addEventListener('click', function () { setVol(vol + 10); });
+    setVol(80);
+    // mini reproductor
+    var inView = true;
+    function mini() {
+      var show = !au.paused && !inView;
+      $r('rMini').classList.toggle('show', show);
+      $r('rMini').setAttribute('aria-hidden', String(!show));
+      $r('rMiniBtn').tabIndex = show ? 0 : -1;
+      $r('rMini').querySelector('a').tabIndex = show ? 0 : -1;
+    }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; mini(); }, { threshold: .15 }).observe(box);
+    // Spily baila al ritmo de cada pista
+    var lookT = 0;
+    function frame(now) {
+      var t = TR[cur], on = !au.paused, s = now / 1000;
+      var ct = au.currentTime || 0, talk = !!inId || t.kind === 'voz', tk = inId || t;
+      var ph = on && !talk ? ct * t.bpm / 60 : s * (talk ? 1.1 : .5);
+      var mo = 0;
+      if (talk && on) {
+        var mi = Math.floor((ct - tk.v0) * 20); mo = (mi >= 0 && mi < tk.mouth.length) ? +tk.mouth[mi] / 9 : 0;
+        // subtítulos frase por frase
+        var ci = -1; if (!inId) for (var q = 0; q < t.caps.length; q++) if (ct >= t.caps[q][0] - .1) ci = q;
+        if (!inId && ci >= 0 && ct > t.caps[ci][1] + 1.2 && (ci === t.caps.length - 1)) ci = -2;
+        if (ci !== capCur) { capCur = ci; var cp = document.getElementById('rCap'); if (cp) { cp.textContent = ci >= 0 ? t.caps[ci][2] : ''; cp.classList.toggle('on', ci >= 0); } }
+      }
+      if (mOpen) { var op = mo > .12; mOpen.setAttribute('ry', (1.5 + mo * 6).toFixed(2)); mOpen.setAttribute('opacity', op ? '1' : '0'); mSmirk.setAttribute('opacity', op ? '0' : '1'); }
+      var fr = ph - Math.floor(ph), hit = on ? (talk ? mo * .6 : Math.pow(1 - fr, 3)) : 0;
+      var loud = on ? (t.wave[Math.min(t.wave.length - 1, Math.floor(ct / t.dur * t.wave.length))] || .5) : .15;
+      if (!reduce) {
+        var y = on ? (talk ? -mo * 3 + Math.sin(s * 1.4) * 1.2 : -hit * 7 * (.5 + loud)) : Math.sin(s * 1.6) * 1.5;
+        var rot = on ? (talk ? Math.sin(s * .9) * 3 : Math.sin(ph * Math.PI) * 5 * (.6 + loud * .6)) : Math.sin(s * .8) * 2;
+        head.setAttribute('transform', 'translate(0 ' + y.toFixed(2) + ') rotate(' + rot.toFixed(2) + ' 54 108)');
+        [].forEach.call(eqs, function (b, k) {
+          var h = on ? 6 + 28 * loud * (.35 + .65 * Math.abs(Math.sin(ph * Math.PI * (k % 3 + 1) / 2 + k * 1.7))) * (.7 + .3 * hit) : 4 + 3 * Math.abs(Math.sin(s * 1.2 + k));
+          b.style.height = h.toFixed(1) + 'px';
+        });
+      }
+      [].forEach.call(glows, function (g) { g.style.opacity = on ? (.55 + .45 * hit).toFixed(2) : '.45'; });
+      // de vez en cuando mira al frente, como Slide
+      if (now > lookT) { pp.setAttribute('transform', 'translate(-6 0)'); setTimeout(function () { pp.removeAttribute('transform'); }, 900); lookT = now + 4500 + Math.random() * 3000; }
+      requestAnimationFrame(frame);
+    }
+    load(0);
+    requestAnimationFrame(frame);
+  })();
+
+
+  // ---------- TagSlider: muro de tags de viajeros ----------
+  (function () {
+    var form = document.getElementById('tagForm');
+    if (!form) return;
+    var $t = function (id) { return document.getElementById(id); };
+    function faceSVG(bg, wh, ink) {
+      return '<svg viewBox="0 0 108 108" aria-hidden="true"><rect width="108" height="108" rx="26" fill="' + bg + '"/>' +
+        '<path fill="' + wh + '" d="M24,50 A11,11 0 0,0 46,50 Z"/><path fill="' + wh + '" d="M62,50 A11,11 0 0,0 84,50 Z"/>' +
+        '<circle fill="' + ink + '" cx="41" cy="53" r="4.6"/><circle fill="' + ink + '" cx="79" cy="53" r="4.6"/>' +
+        '<path stroke="' + ink + '" stroke-width="5" stroke-linecap="round" d="M22,48.5 L48,48.5 M60,48.5 L86,48.5"/><circle fill="' + ink + '" cx="54" cy="68" r="3.2"/></svg>';
+    }
+    var AV = {
+      slide: { c: '#A8C6E8', name: 'Slide', svg: function () { return faceSVG('#A8C6E8', '#E8E9D8', '#5279B9'); } },
+      spily: { c: '#C4B2F6', name: 'Spily', svg: function () { return spilySVG({ label: '' }); } },
+      rosa: { c: '#FF9CC8', name: 'Rosa', svg: function () { return faceSVG('#FFB3D4', '#FFF1F7', '#C2185B'); } },
+      amarillo: { c: '#FFD66B', name: 'Amarillo', svg: function () { return faceSVG('#FFDE85', '#FFF8E1', '#B7791F'); } }
+    };
+    var KEYS = ['slide', 'spily', 'rosa', 'amarillo'];
+    var pick = 'slide';
+    var who = $t('tagWho');
+    KEYS.forEach(function (k) {
+      var b = document.createElement('button'); b.type = 'button'; b.innerHTML = AV[k].svg();
+      b.setAttribute('aria-label', 'Acompañante: ' + AV[k].name); b.setAttribute('aria-pressed', String(k === pick));
+      b.addEventListener('click', function () { pick = k; [].forEach.call(who.children, function (x) { x.setAttribute('aria-pressed', String(x === b)); }); });
+      who.appendChild(b);
+    });
+    // Los tags de la casa: siempre al final del tablero
+    var HOUSE = [
+      { n: 'Spily', t: '¡Bienvenidos a TagSlider! Cuelga tu tag y sigue el viaje. Yo pongo la música.', a: 'spily', d: new Date(2026, 9, 10, 20, 30), house: true },
+      { n: 'Slide', t: 'Aquí nadie te interrumpe. Tómate tu tiempo. ¬.¬', a: 'slide', d: new Date(2026, 9, 10, 20, 20), house: true },
+      { n: 'Slidy', t: '¡Hola! Cuando termines de leer, ¿jugamos con las notas?', a: 'rosa', d: new Date(2026, 9, 10, 20, 10), house: true },
+      { n: 'Bizy', t: 'Deja tu tag, que aquí los leemos todos. ¡Buen viaje!', a: 'amarillo', d: new Date(2026, 9, 10, 20, 0), house: true }
+    ];
+    // ---- conexión con Google Forms y Sheets ----
+    var conf = { action: '', ids: [], sheet: '' };
+    (function () {
+      try {
+        if (TAG_FORM) {
+          var u = new URL(TAG_FORM);
+          conf.action = u.origin + u.pathname.replace(/\/viewform.*$/, '/formResponse');
+          u.searchParams.forEach(function (v, k) { if (/^entry\.\d+$/.test(k)) conf.ids.push(k); });
+        }
+        var m = TAG_SHEET && TAG_SHEET.match(/\/spreadsheets\/d\/([A-Za-z0-9_-]+)/);
+        if (m) conf.sheet = m[1];
+      } catch (e) {}
+    })();
+    var live = !!(conf.action && conf.ids.length >= 2 && conf.sheet);
+    var MINE_KEY = 'tagslider-mios', LAST_KEY = 'tagslider-ultimo';
+    function lsGet(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
+    function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    var remote = [], shown = 9;
+    function avFor(name, a) { if (AV[a]) return a; var h = 0; for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0; return KEYS[h % KEYS.length]; }
+    function fmt(d) {
+      try { return d.toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + d.toLocaleTimeString('es-CO', { hour: 'numeric', minute: '2-digit' }); }
+      catch (e) { return d.toISOString().slice(0, 16).replace('T', ' '); }
+    }
+    function card(tg, num, isNew) {
+      var el = document.createElement('article');
+      var k = avFor(tg.n, tg.a);
+      el.className = 'ttag' + (tg.mine ? ' mine' : '') + (isNew ? ' new' : '');
+      el.style.setProperty('--tc', AV[k].c);
+      el.style.setProperty('--r', ((num * 37) % 7 - 3) * .7 + 'deg');
+      el.innerHTML = '<div class="tband"></div><div class="top"><span class="av">' + AV[k].svg() + '</span><div><div class="nm"></div><div class="kind">' + (tg.house ? 'De la casa' : 'Viajero invitado') + '</div></div></div>' +
+        '<p class="tx"></p><div class="ft"><span>' + (tg.house ? 'Nº ★' : 'Nº ' + String(num).padStart(4, '0')) + '</span><span class="stamp"></span></div>';
+      el.querySelector('.nm').textContent = tg.n;
+      el.querySelector('.tx').textContent = tg.t;
+      el.querySelector('.stamp').textContent = fmt(tg.d);
+      el.setAttribute('aria-label', 'Tag de ' + tg.n);
+      return el;
+    }
+    function render(newKey) {
+      var mine = lsGet(MINE_KEY, []).map(function (m) { return { n: m.n, t: m.t, a: m.a, d: new Date(m.ts), mine: true }; });
+      // los míos que ya llegaron a la hoja dejan de guardarse aparte
+      var pend = mine.filter(function (m) { return !remote.some(function (r) { return r.n === m.n && r.t === m.t; }); });
+      if (live && pend.length !== mine.length) lsSet(MINE_KEY, pend.map(function (m) { return { n: m.n, t: m.t, a: m.a, ts: +m.d }; }));
+      remote.forEach(function (r) { if (mine.some(function (m) { return m.n === r.n && m.t === r.t; })) r.mine = true; });
+      var guests = remote.concat(pend).sort(function (a, b) { return b.d - a.d; });
+      var total = guests.length;
+      var all = guests.concat(HOUSE);
+      var board = $t('tagBoard'); board.innerHTML = '';
+      all.slice(0, shown).forEach(function (tg, i) {
+        var num = tg.house ? 0 : total - i;
+        board.appendChild(card(tg, num, newKey && tg.mine && tg.n + tg.t === newKey));
+      });
+      $t('tagMore').hidden = all.length <= shown;
+      $t('tagCount').innerHTML = '<b>' + total + '</b> ' + (total === 1 ? 'tag colgado' : 'tags colgados');
+    }
+    $t('tagMore').addEventListener('click', function () { shown += 9; render(); });
+    // leer la hoja (JSONP de Google Visualization: funciona en GitHub Pages sin servidor)
+    function load() {
+      if (!live) { render(); return; }
+      var cb = '__tags' + Date.now();
+      window[cb] = function (res) {
+        try {
+          var cols = res.table.cols.map(function (c) { return (c.label || '').toLowerCase(); });
+          var iHide = cols.findIndex(function (l) { return /ocult/.test(l); });
+          var iAv = cols.findIndex(function (l) { return /personaje|acompa/.test(l); });
+          remote = (res.table.rows || []).map(function (r) {
+            var c = r.c || [], ts = c[0] && c[0].v, d = new Date();
+            var m = typeof ts === 'string' && ts.match(/Date\((\d+),(\d+),(\d+),?(\d+)?,?(\d+)?,?(\d+)?\)/);
+            if (m) d = new Date(+m[1], +m[2], +m[3], +(m[4] || 0), +(m[5] || 0), +(m[6] || 0));
+            return { d: d, n: String((c[1] && c[1].v) || '').trim().slice(0, 24), t: String((c[2] && c[2].v) || '').trim().slice(0, 240),
+              a: iAv >= 0 && c[iAv] ? String(c[iAv].v || '').toLowerCase() : '', hide: iHide >= 0 && c[iHide] && c[iHide].v };
+          }).filter(function (x) { return x.n && x.t && !x.hide; });
+        } catch (e) { remote = []; }
+        render(); delete window[cb]; s.remove();
+      };
+      var s = document.createElement('script');
+      s.src = 'https://docs.google.com/spreadsheets/d/' + conf.sheet + '/gviz/tq?headers=1&tqx=responseHandler:' + cb + '&tq=' + encodeURIComponent('select *') + '&_=' + Date.now();
+      s.onerror = function () { render(); };
+      document.body.appendChild(s);
+    }
+    // contadores de caracteres
+    [['tagName', 'tagNameN', 24], ['tagText', 'tagTextN', 240]].forEach(function (x) {
+      var i = $t(x[0]); i.addEventListener('input', function () { $t(x[1]).textContent = i.value.length + '/' + x[2]; });
+    });
+    // un filtro básico; la revisión de verdad la hace una persona
+    var BAD = /(hijuep|hpta|malparid|gonorre|marica\b|puta|put[oa]s?\b|mierda|verga|pendej|idiota|imb[eé]cil|est[uú]pid|culo\b|coñ|carajo|zorra|maric[oó]n|fuck|shit|bitch)/i;
+    function say(t, kind) { var m = $t('tagMsg'); m.textContent = t; m.className = 'msg on ' + (kind || ''); }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n = $t('tagName').value.replace(/\s+/g, ' ').trim(), t = $t('tagText').value.replace(/\n{3,}/g, '\n\n').trim();
+      if (n.length < 2) return say('Escribe tu nombre de viajero (mínimo 2 letras).', 'bad');
+      if (t.length < 3) return say('Escribe tu mensaje.', 'bad');
+      if (/https?:|www\.|\.com\b/i.test(n + ' ' + t)) return say('Los tags no pueden llevar enlaces.', 'bad');
+      if (BAD.test(n + ' ' + t)) return say('Ese mensaje tiene palabras que no van en TagSlider. Inténtalo de otra forma.', 'bad');
+      var last = lsGet(LAST_KEY, 0);
+      if (Date.now() - last < 45000) return say('Espera unos segundos antes de colgar otro tag.', 'bad');
+      var tg = { n: n, t: t, a: pick, ts: Date.now() };
+      var mine = lsGet(MINE_KEY, []); mine.push(tg); lsSet(MINE_KEY, mine); lsSet(LAST_KEY, Date.now());
+      if (live) {
+        var body = new URLSearchParams();
+        body.append(conf.ids[0], n); body.append(conf.ids[1], t); if (conf.ids[2]) body.append(conf.ids[2], pick);
+        $t('tagSend').disabled = true;
+        fetch(conf.action, { method: 'POST', mode: 'no-cors', body: body }).then(function () {
+          say('¡Listo! Tu tag ya está colgado. Gracias por pasar.', 'ok');
+        }).catch(function () {
+          say('No pudimos colgar tu tag. Revisa tu conexión e inténtalo otra vez.', 'bad');
+          lsSet(MINE_KEY, lsGet(MINE_KEY, []).filter(function (m) { return m.ts !== tg.ts; }));
+          render();
+        }).then(function () { $t('tagSend').disabled = false; setTimeout(load, 6000); });
+      } else {
+        say('Modo de prueba: TagSlider aún no está conectado, así que tu tag solo se ve en este navegador.', 'ok');
+      }
+      form.reset(); $t('tagNameN').textContent = '0/24'; $t('tagTextN').textContent = '0/240';
+      shown = Math.max(shown, 9); render(n + t);
+      $t('tagBoard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    load();
+    if (live) setInterval(function () { if (!document.hidden) load(); }, 60000);
   })();
 
   // Caras de Slide: miran hacia lo importante y de vez en cuando te miran a ti

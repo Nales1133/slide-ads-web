@@ -543,6 +543,8 @@ button.chip svg{width:22px; height:22px}
   .a-sing,.a-nod,.a-dance,.a-nope,.a-shiver,.a-puff,.a-dizzy,.a-joy,.a-boing,.face .spiral,.face .ostar,.a-dance .ear-l,.a-dance .ear-r,.over,.pad,.sheet,.pad.hint::after{animation:none}
   .note{animation-duration:.01s}
 }
+.welcome .devbadge{position:relative; z-index:1; margin:14px 0 0; padding:6px 14px; border-radius:999px; background:rgba(255,255,255,.85); color:#5157A0; font:700 13px 'Nunito', sans-serif; letter-spacing:.3px}
+.devnote{margin:-4px 0 14px; padding:10px 14px; border-radius:14px; background:#FFF3C4; color:#6B5300; font:700 14px 'Nunito', sans-serif}
 </style>
 </head>
 <body>
@@ -747,6 +749,7 @@ button.chip svg{width:22px; height:22px}
     routine: { on: true, sleep: '21:00', wake: '06:30', breakfast: '07:00', lunch: '12:30', dinner: '18:30' } };
   var records = { facil: 0, normal: 0, dificil: 0, learned: {} };
   try { Object.assign(prefs, JSON.parse(localStorage.getItem('slidy-prefs') || '{}')); } catch (e) {}
+  prefs.voice = false; // Voces apagadas por ahora: el juego está en desarrollo.
   try { Object.assign(records, JSON.parse(localStorage.getItem('slidy-records') || '{}')); } catch (e) {}
   function savePrefs() { try { localStorage.setItem('slidy-prefs', JSON.stringify(prefs)); } catch (e) {} }
   function saveRecords() { try { localStorage.setItem('slidy-records', JSON.stringify(records)); } catch (e) {} }
@@ -972,7 +975,7 @@ button.chip svg{width:22px; height:22px}
     if (i != null) pads[i].classList.add('hint');
   }
 
-  // Control segmentado con pastilla que se desliza (como Cola/Apps en Slide Ads).
+  // Control segmentado con pastilla que se desliza (como Cola/Apps en Slide).
   function segmented(el, options, value, onPick) {
     el.innerHTML = '<span class="pill" aria-hidden="true"></span>';
     var pill = el.firstChild;
@@ -1811,9 +1814,9 @@ button.chip svg{width:22px; height:22px}
     bg.innerHTML =
       '<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="stitle">' +
       '<h2 id="stitle">Ajustes</h2>' +
+      '<p class="devnote">Slidy está en desarrollo. Esta es una versión de prueba.</p>' +
       '<label class="lbl">Personaje</label><div class="seg" id="sChar"></div>' +
       '<label class="lbl">Colores</label><div class="seg" id="sPal"></div>' +
-      '<div class="row"><div><b>Voz</b><span>' + who().name + ' lee en voz alta los botones y lo que pasa en el juego</span></div><button class="tog" id="tVoice" aria-label="Voz"><span></span></button></div>' +
       '<div class="row"><div><b>Sonido</b><span>Las teclas suenan como un glockenspiel</span></div><button class="tog" id="tSound" aria-label="Sonido"><span></span></button></div>' +
       '<label class="lbl">Volumen</label><div class="seg" id="sVol"></div>' +
       '<div class="row"><div><b>Vibración</b><span>Un pulso al tocar, en móviles compatibles</span></div><button class="tog" id="tVibe" aria-label="Vibración"><span></span></button></div>' +
@@ -1837,8 +1840,7 @@ button.chip svg{width:22px; height:22px}
         if (key === 'vibe') buzz(30);
       });
     }
-    tog('tSound', 'sound'); tog('tVibe', 'vibe'); tog('tVoice', 'voice');
-    $('tVoice').addEventListener('click', function () { if (prefs.voice) speak('Voz activada'); else if (synth) synth.cancel(); });
+    tog('tSound', 'sound'); tog('tVibe', 'vibe');
     segmented($('sChar'), [{ label: 'Slidy' }, { label: 'Bizy' }], prefs.char === 'bizy' ? 1 : 0, function (i) {
       close(); switchChar(i ? 'bizy' : 'slidy');
     });
@@ -1894,7 +1896,8 @@ button.chip svg{width:22px; height:22px}
       '<div class="hill h1"></div><div class="hill h2"></div><div class="ground"></div>' + sparks + '</div>' +
       '<div class="pair"></div>' +
       '<div class="bubble" id="wBubble" aria-live="polite"><small>Slidy y Bizy</small>' + (first ? '¡Hola! ¿Jugamos?' : '¡Hola de nuevo!') + '</div>' +
-      '<div id="wStep"><button class="go" id="wStart">' + WAVE_ICON + (first ? 'Toca aquí' : '¡A jugar!') + '</button></div>';
+      '<div id="wStep"><button class="go" id="wStart">' + WAVE_ICON + (first ? 'Toca aquí' : '¡A jugar!') + '</button></div>' +
+      '<p class="devbadge">En desarrollo · versión de prueba</p>';
     document.body.appendChild(w);
     var pair = w.querySelector('.pair');
     var fs = {};
