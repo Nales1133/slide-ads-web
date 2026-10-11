@@ -924,7 +924,23 @@ function onairSVG(j) {
       }
       say();
     }
-    function play() { au.play().catch(function () {}); }
+    var fails = 0;
+    function tell(html) { var b = document.getElementById('rSay'); if (b) b.innerHTML = html; }
+    function play() {
+      var pr = au.play();
+      if (pr && pr.catch) pr.catch(function (e) {
+        if (e && e.name === 'NotAllowedError') tell('Toca <b>play</b> otra vez para escuchar');
+      });
+    }
+    // si una pista no carga, la Radio no se queda muda: salta a la siguiente
+    function skipBroken() {
+      if (inId) { inId = null; au.src = 'radio/' + TR[cur].slug + '.mp3'; say(); play(); return; }
+      if (++fails >= 3) { tell('No pude cargar el audio aquí. Prueba en otro navegador.'); fails = 0; return; }
+      tell('Esa pista no cargó, paso a la siguiente…');
+      setTimeout(function () { load(cur + 1); play(); }, 900);
+    }
+    au.addEventListener('error', function () { if (au.getAttribute('src')) skipBroken(); });
+    au.addEventListener('playing', function () { fails = 0; });
     // identificador de la emisora antes de la canción
     function playWithId(i) {
       load(i);
